@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Antongambles">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#8fb0c2"/>
+      <stop offset="1" stop-color="#d9a35e"/>
+    </linearGradient>
+    <filter id="s" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+  <rect x="26" y="26" width="460" height="460" rx="92" fill="#0b101b" stroke="rgba(255,255,255,0.16)" stroke-width="4" filter="url(#s)"/>
+  <path d="M76 166C130 92 214 56 256 56s126 36 180 110" fill="none" stroke="url(#g)" stroke-width="18" stroke-linecap="round" opacity="0.9"/>
+  <path d="M76 346c54 74 138 110 180 110s126-36 180-110" fill="none" stroke="url(#g)" stroke-width="18" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="256" cy="256" r="118" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+  <circle cx="256" cy="256" r="86" fill="rgba(0,0,0,0.22)" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+  <text x="256" y="244" text-anchor="middle" font-size="34" font-weight="900" fill="rgba(255,255,255,0.92)" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial">ANTON</text>
+  <text x="256" y="282" text-anchor="middle" font-size="34" font-weight="900" fill="rgba(255,255,255,0.92)" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial">GAMBLES</text>
+  <path d="M168 318h176" stroke="url(#g)" stroke-width="6" stroke-linecap="round" opacity="0.95"/>
+</svg>

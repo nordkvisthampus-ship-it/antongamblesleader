@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="ag-site-url" content="http://localhost:8000">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Levels & Ranks | Antongambles</title>
+    <meta name="description" content="All 100 levels on AntonGambles. See every rank, the Coins required, and the rewards and milestones you unlock as you climb from LVL 1 to LVL 100." />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <meta name="theme-color" content="#070707" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css?v=484" />
+    <script src="../app.js?v=484" defer></script>
+    <script src="./levels.js?v=479" defer></script>
+    <style>
+      :root {
+        --gold-1: #ffe27a;
+        --gold-2: #d4af37;
+        --gold-3: #9b7b1f;
+      }
+      .lvl-wrap {
+        width: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 28px 28px 60px;
+      }
+      .lvl-hero {
+        background: linear-gradient(145deg, rgba(212, 175, 55, 0.10), rgba(10, 9, 8, 0.85) 55%, rgba(10, 9, 8, 1));
+        border: 1px solid rgba(212, 175, 55, 0.18);
+        border-radius: 22px;
+        padding: 34px 32px 32px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 60px -30px rgba(212, 175, 55, 0.25);
+      }
+      .lvl-hero::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        right: -80px;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(circle, rgba(255, 210, 106, 0.18), transparent 62%);
+        pointer-events: none;
+      }
+      .lvl-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(transparent 95%, rgba(212, 175, 55, 0.08) 95%),
+          linear-gradient(90deg, transparent 95%, rgba(212, 175, 55, 0.08) 95%);
+        background-size: 44px 44px;
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      .lvl-hero-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        position: relative;
+        z-index: 1;
+      }
+      .lvl-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #f1cf78;
+        font-weight: 700;
+        font-size: 12.5px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.22);
+        margin-bottom: 14px;
+      }
+      .lvl-kicker svg {
+        width: 14px;
+        height: 14px;
+      }
+      .lvl-title {
+        font-family: "Outfit", sans-serif;
+        font-size: 54px;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        margin: 0;
+        font-weight: 900;
+      }
+      .lvl-title-gold {
+        background: linear-gradient(135deg, #fff1b8 0%, #ffe27a 35%, #d4af37 65%, #9b7b1f 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+      }
+      .lvl-subtitle {
+        color: #b3a796;
+        font-size: 15.5px;
+        line-height: 1.55;
+        margin: 14px 0 0;
+        max-width: 560px;
+        font-weight: 500;
+      }
+      .lvl-hero-current {
+        flex-shrink: 0;
+        background: linear-gradient(180deg, rgba(20, 17, 14, 0.92), rgba(14, 11, 8, 0.92));
+        border: 1px solid rgba(212, 175, 55, 0.22);
+        border-radius: 18px;
+        padding: 20px 22px;
+        min-width: 300px;
+        box-shadow: 0 12px 40px -18px rgba(0,0,0,0.9);
+      }
+      .lvl-hc-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #958978;
+        margin-bottom: 10px;
+      }
+      .lvl-hc-current {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 4px;
+      }
+      .lvl-hc-num {
+        font-family: "Outfit", sans-serif;
+        font-size: 46px;
+        line-height: 1;
+        font-weight: 900;
+        background: linear-gradient(135deg, #ffe27a, #d4af37);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.03em;
+      }
+      .lvl-hc-tag {
+        font-size: 13px;
+        color: #f5c771;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .lvl-hc-points {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #b3a796;
+        font-size: 12.5px;
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+      .lvl-hc-points strong { color: #faf6ee; font-weight: 800; }
+      .lvl-progress {
+        width: 100%;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 999px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .lvl-progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #9b7b1f, #d4af37 45%, #ffe27a);
+        border-radius: 999px;
+        width: 0%;
+        box-shadow: 0 0 18px rgba(255, 210, 106, 0.35);
+        transition: width 0.8s cubic-bezier(.2,.9,.3,1);
+      }
+      .lvl-hc-next {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 11.5px;
+        color: #958978;
+        font-weight: 600;
+      }
+      .lvl-hc-next strong { color: #ffe27a; font-weight: 800; }
+
+      .lvl-section {
+        margin-top: 42px;
+      }
+      .lvl-section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        gap: 16px;
+      }
+      .lvl-section-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .lvl-section-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ffe27a, #d4af37);
+        box-shadow: 0 0 8px rgba(255, 210, 106, 0.7);
+      }
+      .lvl-section-title {
+        font-family: "Outfit", sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 0;
+        color: #faf6ee;
+      }
+      .lvl-section-sub {
+        font-size: 13px;
+        color: #958978;
+        font-weight: 500;
+      }
+
+      .lvl-milestones {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .lvl-ms-card {
+        background: linear-gradient(180deg, rgba(20, 17, 14, 0.85), rgba(12, 10, 8, 0.85));
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 20px 18px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.35s cubic-bezier(.2,.9,.3,1);
+      }
+      .lvl-ms-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.35), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .lvl-ms-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(212, 175, 55, 0.24);
+        box-shadow: 0 16px 40px -20px rgba(212, 175, 55, 0.28);
+      }
+      .lvl-ms-card:hover::before { opacity: 1; }
+      .lvl-ms-card.unlocked {
+        border-color: rgba(212, 175, 55, 0.28);
+        background: linear-gradient(180deg, rgba(28, 22, 12, 0.9), rgba(14, 11, 8, 0.92));
+      }
+      .lvl-ms-card.unlocked::before { opacity: 0.9; }
+      .lvl-ms-card.is-max {
+        border-color: rgba(255, 210, 106, 0.34);
+        background: radial-gradient(circle at top, rgba(212, 175, 55, 0.16), rgba(12, 10, 8, 0.95) 65%);
+        box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.12), 0 18px 44px -22px rgba(212, 175, 55, 0.45);
+      }
+      .lvl-ms-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        margin-bottom: 14px;
+        font-family: "Outfit", sans-serif;
+        font-size: 16px;
+        font-weight: 900;
+        color: #faf6ee;
+      }
+      .lvl-ms-card.unlocked .lvl-ms-badge {
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(155, 123, 31, 0.1));
+        border-color: rgba(212, 175, 55, 0.35);
+        color: #ffe27a;
+      }
+      .lvl-ms-card.is-max .lvl-ms-badge {
+        background: linear-gradient(135deg, #ffe27a, #d4af37);
+        border-color: rgba(255, 255, 255, 0.15);
+        color: #1a1103;
+      }
+      .lvl-ms-level {
+        font-family: "Outfit", sans-serif;
+        font-size: 26px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        margin: 0 0 4px;
+        color: #faf6ee;
+      }
+      .lvl-ms-card.unlocked .lvl-ms-level { color: #ffe27a; }
+      .lvl-ms-card.is-max .lvl-ms-level {
+        background: linear-gradient(135deg, #fff1b8, #d4af37);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+      }
+      .lvl-ms-threshold {
+        font-size: 11.5px;
+        color: #8e8270;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .lvl-ms-threshold strong { color: #d7c9b3; }
+      .lvl-ms-perk {
+        font-size: 13px;
+        line-height: 1.45;
+        color: #b3a796;
+        font-weight: 500;
+      }
+      .lvl-ms-lock {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        font-size: 10.5px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 4px 8px;
+        border-radius: 999px;
+      }
+      .lvl-ms-card.unlocked .lvl-ms-lock { display: none; }
+      .lvl-ms-lock.is-locked {
+        color: #8e8270;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .lvl-legend {
+        margin-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px 24px;
+        font-size: 12px;
+        color: #958978;
+        font-weight: 600;
+      }
+      .lvl-legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .lvl-legend-chip {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .lvl-legend-chip.current {
+        background: linear-gradient(135deg, #ffe27a, #d4af37);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 8px rgba(255, 210, 106, 0.5);
+      }
+      .lvl-legend-chip.unlocked {
+        background: linear-gradient(180deg, rgba(28, 22, 12, 1), rgba(18, 14, 9, 1));
+        border-color: rgba(212, 175, 55, 0.3);
+      }
+      .lvl-legend-chip.locked {
+        background: rgba(20, 17, 14, 0.8);
+        border-color: rgba(255, 255, 255, 0.05);
+      }
+      .lvl-legend-chip.milestone {
+        background: radial-gradient(circle at 30% 20%, rgba(255, 226, 122, 0.25), rgba(212, 175, 55, 0.08));
+        border-color: rgba(255, 210, 106, 0.35);
+      }
+
+      .lvl-grid {
+        display: grid;
+        grid-template-columns: repeat(10, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .lvl-cell {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        background: rgba(20, 17, 14, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        transition: all 0.25s ease;
+        overflow: hidden;
+      }
+      .lvl-cell::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 45%);
+        pointer-events: none;
+      }
+      .lvl-cell:hover {
+        transform: translateY(-1.5px);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .lvl-cell-num {
+        font-family: "Outfit", sans-serif;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        color: #8f8372;
+        line-height: 1;
+      }
+      .lvl-cell-mini {
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #6f6556;
+      }
+      .lvl-cell.unlocked {
+        background: linear-gradient(180deg, rgba(28, 22, 12, 0.95), rgba(18, 14, 9, 0.95));
+        border-color: rgba(212, 175, 55, 0.25);
+      }
+      .lvl-cell.unlocked .lvl-cell-num { color: #f5c771; }
+      .lvl-cell.unlocked .lvl-cell-mini { color: #a08c67; }
+      .lvl-cell.current {
+        background: linear-gradient(135deg, #ffe27a, #d4af37 60%, #b5912d);
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.25), 0 10px 28px -12px rgba(212, 175, 55, 0.7);
+      }
+      .lvl-cell.current .lvl-cell-num {
+        color: #1a1103;
+      }
+      .lvl-cell.current .lvl-cell-mini {
+        color: rgba(26, 17, 3, 0.72);
+      }
+      .lvl-cell.milestone {
+        border-color: rgba(255, 210, 106, 0.28);
+      }
+      .lvl-cell.milestone::after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #ffe27a;
+        box-shadow: 0 0 6px rgba(255, 210, 106, 0.85);
+      }
+
+      @media (max-width: 1080px) {
+        .lvl-milestones { grid-template-columns: repeat(3, 1fr); }
+        .lvl-grid { grid-template-columns: repeat(8, 1fr); }
+        .lvl-title { font-size: 44px; }
+      }
+      @media (max-width: 780px) {
+        .lvl-wrap { padding: 20px 16px 40px; }
+        .lvl-hero { padding: 24px 20px 22px; }
+        .lvl-hero-top { flex-direction: column; }
+        .lvl-hero-current { width: 100%; min-width: 0; }
+        .lvl-title { font-size: 36px; }
+        .lvl-milestones { grid-template-columns: repeat(2, 1fr); }
+        .lvl-grid { grid-template-columns: repeat(5, 1fr); }
+        .lvl-cell-num { font-size: 16px; }
+      }
+      @media (max-width: 480px) {
+        .lvl-grid { grid-template-columns: repeat(4, 1fr); }
+        .lvl-milestones { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg-particles" class="bg-particles" aria-hidden="true"></div>
+
+    <div class="sidebar-brand">
+      <a href="../" class="sidebar-brand-logo">
+        <span class="sidebar-logo-wrap">
+          <img src="../assets/antonpng.png" alt="Anton" class="sidebar-logo-avatar" />
+        </span>
+        <span class="sidebar-logo-text">Anton<span class="logo-accent">Gambles</span></span>
+      </a>
+      <button type="button" id="sidebar-collapse" class="sidebar-collapse-btn" aria-label="Minimize sidebar" aria-expanded="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+      </button>
+    </div>
+
+    <header class="top-bar">
+      <div class="top-bar-inner">
+        <div class="top-bar-left">
+          <a href="../" class="back-btn" aria-label="Back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </a>
+          <a href="../" class="top-bar-logo">
+            <span class="logo-text">Anton<span class="logo-accent">Gambles</span></span>
+          </a>
+        </div>
+        <div class="top-bar-center">
+          <div class="top-wallet-combo" id="wallet-btn" role="group" aria-label="Wallet">
+            <button class="top-wallet-pill" id="top-wallet-dropdown" type="button" aria-haspopup="dialog" aria-expanded="false">
+              <span class="twp-balance">
+                <span class="twp-cash" id="twp-cash">$0.00</span>
+                <span class="twp-sep">·</span>
+                <span class="twp-coins" id="twp-coins">0 AG</span>
+              </span>
+              <span class="twp-chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
+            <button class="top-wallet-cta" id="top-wallet-cta" type="button">
+              <svg class="twc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+              <span>Wallet</span>
+            </button>
+          </div>
+          <button class="info-icon-btn" aria-label="Info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </button>
+        </div>
+        <div class="top-bar-right">
+          <button class="top-icon-btn" aria-label="Search" id="top-search-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+          <button class="top-icon-btn" aria-label="Notifications" id="top-notif-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.52 2.76a2 2 0 0 1 4.96 0c1.05.22 2.04.73 2.9 1.47a4.8 4.8 0 0 1 1.38 3.37c0 .79.15 1.57.44 2.27l1.14 2.77a1.7 1.7 0 0 1-1.56 2.3H5.16a1.7 1.7 0 0 1-1.56-2.3l1.14-2.77c.29-.7.44-1.48.44-2.27a4.8 4.8 0 0 1 1.38-3.37c.86-.74 1.85-1.25 2.9-1.47Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+            <span class="notif-dot"></span>
+          </button>
+          <button class="login-btn" id="discord-login-btn" aria-haspopup="true" aria-expanded="false">
+            <span>LOGIN</span>
+          </button>
+
+          <div id="profile-dropdown-menu" class="profile-dropdown-menu" style="display:none;">
+            <button id="admin-dashboard-btn" class="profile-dropdown-item profile-dropdown-item--admin" type="button" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <span>Admin Dashboard</span>
+            </button>
+            <button id="view-profile-btn" class="profile-dropdown-item" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>View Profile</span>
+            </button>
+            <button id="levels-btn" class="profile-dropdown-item" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L15 8 L22 9 L17 14 L18 21 L12 18 L6 21 L7 14 L2 9 L9 8 Z"/><path d="M9 15a3 3 0 1 0 6 0 3 3 0 1 0-6 0"/></svg>
+              <span>Levels</span>
+            </button>
+            <div class="profile-dropdown-sep"></div>
+            <button id="logout-btn" class="profile-dropdown-item profile-dropdown-item--danger" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <aside class="app-sidebar sidebar--new" aria-label="Main navigation">
+        <nav class="sidebar-nav sidebar-nav--new">
+
+          <div class="sidebar-section">
+            <span class="sidebar-section-label">Bonuses &amp; Offers</span>
+            <a href="../" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.9 4.9 2.8 2.8"/><path d="m16.2 16.2 2.8 2.8"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.9 19.1 2.8-2.8"/><path d="m16.2 7.8 2.8-2.8"/><circle cx="12" cy="12" r="5"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+              <span>Casino Bonuses</span>
+            </a>
+            <a href="../giveaways/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+              <span>Giveaways</span>
+            </a>
+            <a href="../shop/" class="sidebar-nav-item sidebar-nav-item--new sidebar-nav-item--accent">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/><path d="M13 9V3M10 6h6"/></svg>
+              <span>Store</span>
+            </a>
+          </div>
+
+          <div class="sidebar-section">
+            <span class="sidebar-section-label">Games</span>
+            <a href="../blackjack/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 10h10"/><path d="M7 14h6"/><path d="M6 6v.01"/><path d="M18 6v.01"/><path d="M18 18v.01"/><path d="M6 18v.01"/></svg>
+              <span>Blackjack</span>
+            </a>
+            <a href="../keno/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v6h-3v14H9V8H6z"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="18" r="1.5"/><circle cx="6" cy="18" r="1.5"/></svg>
+              <span>Keno</span>
+            </a>
+          </div>
+
+          <div class="sidebar-section">
+            <span class="sidebar-section-label">Quick Links</span>
+            <a href="https://gambid.gg/?r=anton" target="_blank" rel="noopener noreferrer" class="sidebar-nav-item sidebar-nav-item--new sidebar-nav-item--primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span>Gambid.gg</span>
+            </a>
+            <a href="../leaderboard/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
+              <span>Leaderboard</span>
+            </a>
+            <a href="./" class="sidebar-nav-item sidebar-nav-item--new active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L15 8 L22 9 L17 14 L18 21 L12 18 L6 21 L7 14 L2 9 L9 8 Z"/><path d="M9 15a3 3 0 1 0 6 0 3 3 0 1 0-6 0"/></svg>
+              <span>Levels</span>
+            </a>
+            <a href="../bonus-hunt/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5" rx="1"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+              <span>Bonus Hunt</span>
+            </a>
+          </div>
+        </nav>
+      </aside>
+
+      <div class="app-main">
+        <main class="lvl-wrap">
+          <section class="lvl-hero">
+            <div class="lvl-hero-top">
+              <div>
+                <span class="lvl-kicker">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  Progression & Ranks
+                </span>
+                <h1 class="lvl-title">
+                  <span class="lvl-title-gold">LEVELS</span> 1&nbsp;–&nbsp;100
+                </h1>
+                <p class="lvl-subtitle">Climb from 1 to 100 by earning Coins across the site, streams and giveaways. Every 100 Coins levels you up. Hit milestones to unlock exclusive flair, boosts and rewards.</p>
+              </div>
+              <div class="lvl-hero-current" id="lvl-hero-card">
+                <div class="lvl-hc-label">Your Current Level</div>
+                <div class="lvl-hc-current">
+                  <span class="lvl-hc-num" id="lvl-current-num">1</span>
+                  <span class="lvl-hc-tag">LVL</span>
+                </div>
+                <div class="lvl-hc-points">
+                  <span id="lvl-current-points">0 Coins</span>
+                  <strong id="lvl-max-points">9,900 Coins to MAX</strong>
+                </div>
+                <div class="lvl-progress">
+                  <div class="lvl-progress-fill" id="lvl-current-progress" style="width:0%"></div>
+                </div>
+                <div class="lvl-hc-next">
+                  <span>Next up</span>
+                  <strong id="lvl-next-label">LVL 2</strong>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="lvl-section">
+            <div class="lvl-section-head">
+              <div class="lvl-section-title-wrap">
+                <span class="lvl-section-dot"></span>
+                <h2 class="lvl-section-title">Milestones</h2>
+              </div>
+              <span class="lvl-section-sub">Flagship rewards every 10-25 levels.</span>
+            </div>
+            <div class="lvl-milestones" id="lvl-milestones">
+              <!-- Injected via levels.js -->
+            </div>
+            <div class="lvl-legend">
+              <span class="lvl-legend-item"><span class="lvl-legend-chip current"></span> Your current level</span>
+              <span class="lvl-legend-item"><span class="lvl-legend-chip unlocked"></span> Unlocked</span>
+              <span class="lvl-legend-item"><span class="lvl-legend-chip locked"></span> Locked</span>
+              <span class="lvl-legend-item"><span class="lvl-legend-chip milestone"></span> Milestone tier</span>
+            </div>
+          </section>
+
+          <section class="lvl-section">
+            <div class="lvl-section-head">
+              <div class="lvl-section-title-wrap">
+                <span class="lvl-section-dot"></span>
+                <h2 class="lvl-section-title">All Levels</h2>
+              </div>
+              <span class="lvl-section-sub">100 Coins per level · 10,000 Coins to reach max.</span>
+            </div>
+            <div class="lvl-grid" id="lvl-grid">
+              <!-- Injected via levels.js -->
+            </div>
+          </section>
+        </main>
+
+        <!-- =========================================================
+             FOOTER — Premium AntonGambles (full-width)
+             ========================================================= -->
+        <footer class="site-footer">
+          <div class="footer-inner">
+            <div class="footer-grid">
+              <div class="footer-col footer-col--brand">
+                <a href="../" class="footer-logo">
+                  <img src="../assets/antonpng.png" alt="AntonGambles" />
+                </a>
+                <p class="footer-tagline">Exclusive casino bonuses &amp; offers for the AntonGambles community.</p>
+                <div class="footer-responsible">
+                  <div class="fr-badge">18+</div>
+                  <div class="fr-text">Gamble responsibly. Set a time and money limit. Never chase losses. <a href="https://www.begambleaware.org" target="_blank" rel="noopener noreferrer">BeGambleAware.org</a></div>
+                </div>
+              </div>
+              <div class="footer-col">
+                <h4 class="footer-col-title">Quick Links</h4>
+                <ul class="footer-links">
+                  <li><a href="../">Casino Bonuses</a></li>
+                  <li><a href="../shop/">AG Points Store</a></li>
+                  <li><a href="../giveaways/">Giveaways</a></li>
+                  <li><a href="../bonus-hunt/">Bonus Hunt</a></li>
+                  <li><a href="../levels/">Levels</a></li>
+                  <li><a href="../leaderboard/">Leaderboard</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4 class="footer-col-title">Games</h4>
+                <ul class="footer-links">
+                  <li><a href="../blackjack/">Blackjack</a></li>
+                  <li><a href="../keno/">Keno</a></li>
+                </ul>
+                <h4 class="footer-col-title footer-col-title--spaced">Support</h4>
+                <ul class="footer-links">
+                  <li><a href="https://discord.gg/t7hNWHX6GW" target="_blank" rel="noopener noreferrer">Discord Server</a></li>
+                  <li><a href="mailto:contact@antongambles.com">Contact</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4 class="footer-col-title">Follow AntonGambles</h4>
+                <div class="footer-socials">
+                  <a href="https://twitch.tv/antongambles" target="_blank" rel="noopener noreferrer" class="fs-btn fs-btn--twitch" aria-label="Twitch"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2 L2 6v14h5v2h3l2-2h4l5-5V2 H4 Zm16 10l-3 3h-4l-2 2v-2H6V4h14v8Z"/><path d="M16 6 h2 v6 h-2 z M11 6 h2 v6 h-2 z"/></svg><span>Twitch</span></a>
+                  <a href="https://discord.gg/t7hNWHX6GW" target="_blank" rel="noopener noreferrer" class="fs-btn fs-btn--discord" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 4.5a16.6 16.6 0 0 0-4.1-1.3l-.5 1.1a15.4 15.4 0 0 0-4.9 0l-.5-1.1a16.6 16.6 0 0 0-4.1 1.3C2.9 8 2.4 11.4 2.6 14.8c1.6 1.2 3.3 2.1 5.2 2.7l1-1.7c-.6-.2-1.2-.5-1.8-.9l.4-.3c3.3 1.5 7 1.5 10.4 0l.4.3c-.6.4-1.2.7-1.8.9l1 1.7c1.9-.6 3.6-1.5 5.2-2.7.3-3.7-.3-7.1-2.8-10.3ZM9.3 13.3c-.7 0-1.3-.7-1.3-1.5 0-.8.6-1.5 1.3-1.5s1.3.7 1.3 1.5c0 .8-.6 1.5-1.3 1.5Zm5.4 0c-.7 0-1.3-.7-1.3-1.5 0-.8.6-1.5 1.3-1.5s1.3.7 1.3 1.5c0 .8-.6 1.5-1.3 1.5Z"/></svg><span>Discord</span></a>
+                  <a href="https://instagram.com/antongambles" target="_blank" rel="noopener noreferrer" class="fs-btn fs-btn--insta" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><span>Instagram</span></a>
+                </div>
+                <div class="footer-newsletter">
+                  <div class="fn-label">NEW CUSTOMER AD</div>
+                  <div class="fn-sub">All offers are 18+. T&amp;C apply.</div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <div class="fb-left"><span class="fb-copyright">© 2026 AntonGambles. All rights reserved.</span></div>
+              <div class="fb-mid">
+                <a href="#">Privacy Policy</a><span class="fb-sep">·</span>
+                <a href="#">Terms of Service</a><span class="fb-sep">·</span>
+                <a href="#">Responsible Play</a><span class="fb-sep">·</span>
+                <a href="#">Cookies</a>
+              </div>
+              <div class="fb-right"><span class="fb-site">antongambles.com</span></div>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+
+  </body>
+</html>

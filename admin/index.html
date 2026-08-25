@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="ag-site-url" content="http://localhost:8000">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard · AntonGambles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="../styles.css?v=479" />
+</head>
+<body class="admin-body admin-body--hub">
+  <div class="admin-hub">
+
+    <!-- ===== TOP HEADER (LOGO + LOGIN) ===== -->
+    <header class="admin-hub-header">
+      <div class="admin-hub-brand">
+        <div class="admin-hub-brand-badge">⚙️</div>
+        <div>
+          <h1 class="admin-hub-title">Admin Dashboard</h1>
+          <div class="admin-hub-sub">Control centre for giveaways, bonus hunts &amp; viewer predictions.</div>
+        </div>
+      </div>
+
+      <div class="admin-hub-actions">
+        <a href="../" class="admin-hub-back" target="_parent">← Back to site</a>
+        <div class="admin-hub-user">
+          <div id="admin-hub-auth">
+            <div class="admin-hub-auth-placeholder">Syncing account…</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== TABS (nav) ===== -->
+    <nav class="admin-hub-tabs" role="tablist" aria-label="Admin sections">
+      <button type="button" class="admin-hub-tab admin-hub-tab--active" data-admhub-tab="giveaways" role="tab" aria-selected="true">
+        <span>🎁</span><span>Giveaways</span>
+      </button>
+      <button type="button" class="admin-hub-tab" data-admhub-tab="bonus" role="tab" aria-selected="false">
+        <span>🎰</span><span>Bonus Hunt</span>
+      </button>
+    </nav>
+
+    <!-- ===== CONTENT IFRAME CONTAINER ===== -->
+    <section class="admin-hub-frame-wrap">
+      <iframe id="admin-hub-frame"
+              class="admin-hub-frame"
+              src="./giveaways.html"
+              title="Admin Giveaways"
+              loading="eager"></iframe>
+    </section>
+
+  </div>
+
+  <!-- ===== LOGIN MODAL ===== -->
+  <div id="login-modal" class="modal-overlay" style="display:none"></div>
+
+  <script src="../app.js?v=479" defer></script>
+  <script>
+    (function () {
+      window.addEventListener("DOMContentLoaded", () => {
+        const frame = document.getElementById("admin-hub-frame");
+        document.querySelectorAll("[data-admhub-tab]").forEach((tab) => {
+          tab.addEventListener("click", () => {
+            const key = tab.getAttribute("data-admhub-tab");
+            document.querySelectorAll("[data-admhub-tab]").forEach((t) => {
+              const active = t === tab;
+              t.classList.toggle("admin-hub-tab--active", active);
+              t.setAttribute("aria-selected", String(active));
+            });
+            const nextSrc = key === "bonus" ? "./bonus-hunt.html" : "./giveaways.html";
+            if (frame && frame.getAttribute("src") !== nextSrc) {
+              frame.setAttribute("src", nextSrc);
+            }
+          });
+        });
+
+        const authBlock = document.getElementById("admin-hub-auth");
+        authBlock.innerHTML = '<div class="admin-hub-auth-placeholder">Checking admin access…</div>';
+
+        const getTok = () => {
+          try { return localStorage.getItem("ag_session_token_v1") || ""; }
+          catch (e) { return ""; }
+        };
+
+        const tryAuth = async () => {
+          try {
+            const headers = {};
+            const tok = getTok();
+            if (tok) headers["Authorization"] = "Bearer " + tok;
+            const res = await fetch("/api/deposit-giveaway", { headers });
+            if (!res.ok) {
+              authBlock.innerHTML = '<div class="admin-hub-auth admin-hub-auth--danger">Not connected — login via site again.</div>';
+              return;
+            }
+            const d = await res.json();
+            const isAdminNow = Boolean(d.isAdmin || d.isGiveawayAdminBypass);
+            const me = d.me || (d.activeCampaign && d.activeCampaign.me);
+            const name = me && (me.globalName || me.username);
+            if (me && me.isLoggedIn && name) {
+              authBlock.innerHTML = '<div class="admin-hub-auth-user">' +
+                '<span class="admin-hub-auth-status">' + (isAdminNow ? "🔓" : "🔒") + '</span>' +
+                '<span class="admin-hub-auth-name">' + String(name) + '</span>' +
+                (isAdminNow
+                  ? '<span class="admin-hub-auth-badge admin-hub-auth-badge--success">ADMIN</span>'
+                  : '<span class="admin-hub-auth-badge admin-hub-auth-badge--warn">NOT ADMIN</span>') +
+                '</div>';
+            } else {
+              authBlock.innerHTML = '<div class="admin-hub-auth-placeholder">Not signed in — login from site top bar first.</div>';
+            }
+          } catch (e) {
+            authBlock.innerHTML = '<div class="admin-hub-auth admin-hub-auth--danger">Could not load admin status.</div>';
+          }
+        };
+
+        setTimeout(tryAuth, 400);
+        setTimeout(tryAuth, 1800);
+        setTimeout(tryAuth, 4200);
+      });
+    })();
+  </script>
+</body>
+</html>

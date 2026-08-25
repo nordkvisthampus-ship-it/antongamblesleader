@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta name="ag-site-url" content="http://localhost:8000">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Antongambles | Exclusive Casino Bonuses, Codes &amp; Free Spins</title>
+    <meta name="description" content="Exclusive casino bonuses, promo codes and free spins curated by AntonGambles. Hand-picked crypto and FIAT casinos with exclusive offers you won't find anywhere else." />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <meta name="theme-color" content="#070707" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=485" />
+    <script src="app.js?v=485" defer></script>
+  </head>
+  <body>
+    <div id="bg-particles" class="bg-particles" aria-hidden="true"></div>
+
+    <div class="sidebar-brand">
+      <a href="./" class="sidebar-brand-logo">
+        <span class="sidebar-logo-wrap">
+          <img src="assets/antonpng.png" alt="Anton" class="sidebar-logo-avatar" />
+        </span>
+        <span class="sidebar-logo-text">Anton<span class="logo-accent">Gambles</span></span>
+      </a>
+      <button type="button" id="sidebar-collapse" class="sidebar-collapse-btn" aria-label="Minimize sidebar" aria-expanded="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+      </button>
+    </div>
+
+    <!-- TOP BAR (matchar Roshtein layout) -->
+    <header class="top-bar">
+      <div class="top-bar-inner">
+        <div class="top-bar-left">
+          <a href="#" class="back-btn" aria-label="Back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </a>
+          <a href="./" class="top-bar-logo">
+            <span class="logo-text">Anton<span class="logo-accent">Gambles</span></span>
+          </a>
+        </div>
+        <div class="top-bar-center">
+          <div class="top-wallet-combo" id="wallet-btn" role="group" aria-label="Wallet">
+            <button class="top-wallet-pill" id="top-wallet-dropdown" type="button" aria-haspopup="dialog" aria-expanded="false">
+              <span class="twp-balance">
+                <span class="twp-cash" id="twp-cash">$0.00</span>
+                <span class="twp-sep">·</span>
+                <span class="twp-coins" id="twp-coins">0 AG</span>
+              </span>
+              <span class="twp-chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
+            <button class="top-wallet-cta" id="top-wallet-cta" type="button">
+              <svg class="twc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+              <span>Wallet</span>
+            </button>
+          </div>
+          <button class="info-icon-btn" aria-label="Info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </button>
+        </div>
+        <div class="top-bar-right">
+          <button class="top-icon-btn" aria-label="Search" id="top-search-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+          <button class="top-icon-btn" aria-label="Notifications" id="top-notif-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.52 2.76a2 2 0 0 1 4.96 0c1.05.22 2.04.73 2.9 1.47a4.8 4.8 0 0 1 1.38 3.37c0 .79.15 1.57.44 2.27l1.14 2.77a1.7 1.7 0 0 1-1.56 2.3H5.16a1.7 1.7 0 0 1-1.56-2.3l1.14-2.77c.29-.7.44-1.48.44-2.27a4.8 4.8 0 0 1 1.38-3.37c.86-.74 1.85-1.25 2.9-1.47Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+            <span class="notif-dot"></span>
+          </button>
+          <button class="login-btn" id="discord-login-btn" aria-haspopup="true" aria-expanded="false">
+            <span>LOGIN</span>
+          </button>
+
+          <!-- PROFILE DROPDOWN MENU -->
+          <div id="profile-dropdown-menu" class="profile-dropdown-menu" style="display:none;">
+            <button id="admin-dashboard-btn" class="profile-dropdown-item profile-dropdown-item--admin" type="button" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <span>Admin Dashboard</span>
+            </button>
+            <button id="view-profile-btn" class="profile-dropdown-item" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>View Profile</span>
+            </button>
+            <button id="levels-btn" class="profile-dropdown-item" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L15 8 L22 9 L17 14 L18 21 L12 18 L6 21 L7 14 L2 9 L9 8 Z"/><path d="M9 15a3 3 0 1 0 6 0 3 3 0 1 0-6 0"/></svg>
+              <span>Levels</span>
+            </button>
+            <div class="profile-dropdown-sep"></div>
+            <button id="logout-btn" class="profile-dropdown-item profile-dropdown-item--danger" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <!-- SIDEBAR NY DESIGN — mindre, snygg, kategorier -->
+      <aside class="app-sidebar sidebar--new" aria-label="Main navigation">
+        <nav class="sidebar-nav sidebar-nav--new">
+
+          <!-- CATEGORY: BONUSES & OFFERS -->
+          <div class="sidebar-section">
+            <span class="sidebar-section-label">Bonuses & Offers</span>
+            <a href="./" class="sidebar-nav-item sidebar-nav-item--new active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.9 4.9 2.8 2.8"/><path d="m16.2 16.2 2.8 2.8"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.9 19.1 2.8-2.8"/><path d="m16.2 7.8 2.8-2.8"/><circle cx="12" cy="12" r="5"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+              <span>Casino Bonuses</span>
+            </a>
+            <a href="giveaways/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+              <span>Giveaways</span>
+            </a>
+            <a href="shop/" class="sidebar-nav-item sidebar-nav-item--new sidebar-nav-item--accent">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/><path d="M13 9V3M10 6h6"/></svg>
+              <span>Store</span>
+            </a>
+          </div>
+
+          <!-- CATEGORY: GAMES -->
+          <div class="sidebar-section">
+            <span class="sidebar-section-label">Games</span>
+            <a href="blackjack/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 10h10"/><path d="M7 14h6"/><path d="M6 6v.01"/><path d="M18 6v.01"/><path d="M18 18v.01"/><path d="M6 18v.01"/></svg>
+              <span>Blackjack</span>
+            </a>
+            <a href="keno/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v6h-3v14H9V8H6z"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="18" r="1.5"/><circle cx="6" cy="18" r="1.5"/></svg>
+              <span>Keno</span>
+            </a>
+          </div>
+
+          <!-- CATEGORY: QUICK LINKS -->
+          <div class="sidebar-section">
+            <span class="sidebar-section-label">Quick Links</span>
+            <a href="https://gambid.gg/?r=anton" target="_blank" rel="noopener noreferrer" class="sidebar-nav-item sidebar-nav-item--new sidebar-nav-item--primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span>Gambid.gg</span>
+            </a>
+            <a href="./leaderboard/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
+              <span>Leaderboard</span>
+            </a>
+            <a href="./bonus-hunt/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5" rx="1"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+              <span>Bonus Hunt</span>
+            </a>
+          </div>
+
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <div class="app-main">
+        <main class="wrap">
+          <!-- PAGE HEADER (CLEAN) -->
+          <section class="page-header page-header--clean">
+            <h1 class="page-title page-title--clean">
+              <span>Casino</span>
+              <span class="pt-gold">Bonuses</span>
+            </h1>
+            <p class="page-subtitle page-subtitle--clean">
+              Handpicked exclusive bonuses for the AntonGambles community.
+            </p>
+          </section>
+
+          <!-- ENBART GAMBID featured uppe (ENSAM, alla andra är ner i listan) -->
+          <section class="bonus-grid-wrapper">
+            <!-- GAMBID XL (ENSAM, SIMPEL & SNYGG DESIGN) -->
+            <article class="casino-card casino-card--xl casino-card--gambid-xl" id="gambid-bonus-card" data-provider="gambid">
+              <div class="card-bg-layer card-bg-layer--xl">
+                <div class="chip chip--1"></div>
+                <div class="chip chip--2"></div>
+                <div class="chip chip--3"></div>
+                <div class="chip chip--4"></div>
+                <div class="chip chip--5"></div>
+                <div class="chip chip--6"></div>
+                <div class="chip chip--7"></div>
+                <div class="chip chip--8"></div>
+              </div>
+              <button class="card-info-btn card-info-btn--xl" aria-label="More info" data-info-trigger>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </button>
+              <div class="card-xl-portrait-wrap" aria-hidden="true">
+                <img src="assets/gambidbanner.png" alt="Antongambles portrait" class="card-xl-portrait-img" />
+              </div>
+              <div class="card-xl-content">
+              <div class="card-xl-brand">
+                <div class="card-xl-logo">
+                  <img src="assets/gambid.png" alt="Gambid" class="card-xl-logo-img" />
+                </div>
+                <div class="card-xl-name">Gambid.gg</div>
+              </div>
+                <ul class="card-xl-checks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Exclusive bonus</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fast withdrawals</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited max withdrawal</li>
+                </ul>
+                <div class="card-xl-stats">
+                  <div class="card-xl-stat">
+                    <span class="card-xl-stat-label">200% UP TO</span>
+                    <span class="card-xl-stat-value">$3,000</span>
+                  </div>
+                  <div class="card-xl-stat">
+                    <span class="card-xl-stat-label">ANTONBACK</span>
+                    <span class="card-xl-stat-value">UPTO 10%</span>
+                  </div>
+                  <div class="card-xl-stat card-xl-stat--code">
+                    <span class="card-xl-stat-label">USE CODE:</span>
+                    <span class="card-xl-stat-value">ANTON</span>
+                  </div>
+                </div>
+                <button class="card-xl-claim" data-claim="gambid">
+                  <span class="claim-btn-shine"></span>
+                  <span class="card-xl-claim-text">CLAIM BONUS</span>
+                </button>
+                <a href="./leaderboard/" class="card-xl-leaderboard" aria-label="Gambid.gg Leaderboard — $5,000 prize pool">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                    <path d="M4 22h16"/>
+                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                  </svg>
+                  <span class="card-xl-lb-label">Gambid.gg</span>
+                  <span class="card-xl-lb-value">LEADERBOARD · $5,000 PRIZE</span>
+                </a>
+                <div class="card-xl-foot">18+ | T&amp;C APPLY</div>
+              </div>
+            </article>
+          </section>
+
+          <!-- CLEAN FILTERBAR (single shell) -->
+          <section class="filter-bar filter-bar--clean">
+            <div class="fb-shell-inner">
+
+              <!-- LIVE COUNT -->
+              <div class="fb-live">
+                <span class="fb-live-dot"></span>
+                <span class="fb-live-num" id="filter-result-num">14</span>
+                <span class="fb-live-label">casinos</span>
+              </div>
+
+              <!-- SORT -->
+              <div class="fb-group fb-group--sort" role="tablist" aria-label="Sort">
+                <button type="button" class="fb-chip fb-chip--sort is-active" data-sort="recommended" role="tab" aria-selected="true">Recommended</button>
+              </div>
+
+              <span class="fb-spacer" aria-hidden="true"></span>
+
+              <!-- SEARCH -->
+              <div class="fb-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" id="filter-search" placeholder="Search casinos..." autocomplete="off" />
+              </div>
+
+              <!-- RESET -->
+              <button type="button" class="fb-reset" id="filter-reset" aria-label="Reset filters">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+              </button>
+            </div>
+
+            <!-- HIDDEN BACKUP SELECT för JS -->
+            <select class="filter-select filter-select--hidden" id="filter-sort" aria-hidden="true" tabindex="-1">
+              <option value="recommended"></option>
+              <option value="newest"></option>
+              <option value="bonus-desc"></option>
+              <option value="bonus-asc"></option>
+              <option value="spins-desc"></option>
+              <option value="name"></option>
+            </select>
+          </section>
+
+          <!-- LISTVYN: ALLA casinon inkl Gambid i listform (13 st totalt) -->
+          <section class="bonus-grid-wrapper" style="padding-top: 0; margin-top: 18px;">
+            <div class="bonus-grid bonus-grid--list">
+              <!-- Gambid (Editor's Pick - same as XL above) -->
+              <article class="casino-card casino-card--list casino-card--row" id="gambid-list-bonus-card" data-provider="gambid">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(57, 211, 83, 0.28), transparent 60%),
+                  linear-gradient(90deg, #08140c 0%, #101c14 50%, #050d08 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/gambid.png" alt="Gambid" /></div>
+                  <div class="card-row-name">Gambid.gg</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">200% UP TO</span><span class="card-row-stat-value">$3,000</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">RAKEBACK</span><span class="card-row-stat-value">10%</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">USE CODE</span><span class="card-row-stat-value">ANTON</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Exclusive bonus</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fast withdrawals</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited max withdrawal</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="gambid">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <a href="./leaderboard/" class="lb-row-btn" aria-label="Gambid.gg Leaderboard — $5,000 prize pool" title="Gambid.gg Leaderboard — $5,000 prize pool">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                      <path d="M4 22h16"/>
+                      <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                      <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                      <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                    </svg>
+                    <span>LEADERBOARD · $5K PRIZE</span>
+                  </a>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Lollyspins (tidigare featured MD) -->
+              <article class="casino-card casino-card--list casino-card--row" id="lollyspins-bonus-card" data-provider="lollyspins">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(139, 92, 246, 0.3), transparent 60%),
+                  linear-gradient(90deg, #180a28 0%, #251138 50%, #100518 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/lollyspins-banner.png" alt="Lollyspins" /></div>
+                  <div class="card-row-name">Lollyspins</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">550% UP TO</span><span class="card-row-stat-value">€4,000</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">FREE SPINS</span><span class="card-row-stat-value">550</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Welcome offer</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Crypto friendly</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>24/7 support</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="lollyspins">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <!-- ShakeBet (tidigare 3-kols favorit) -->
+              <article class="casino-card casino-card--list casino-card--row" id="shakebet-bonus-card" data-provider="shakebet">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(245, 158, 75, 0.22), transparent 60%),
+                  linear-gradient(90deg, #150f08 0%, #20160c 50%, #0f0b06 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/shakebet-banner.png" alt="ShakeBet" /></div>
+                  <div class="card-row-name">ShakeBet</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">FREE SPINS</span><span class="card-row-stat-value">300</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rakeback</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Weekly Cashback</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>VIP program</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="shakebet">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Duelbits (tidigare 3-kols favorit) -->
+              <article class="casino-card casino-card--list casino-card--row" id="duelbits-bonus-card" data-provider="duelbits">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(52, 211, 153, 0.22), transparent 60%),
+                  linear-gradient(90deg, #180e08 0%, #26160a 50%, #0e0704 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/duelbits-banner.png" alt="Duelbits" /></div>
+                  <div class="card-row-name">Duelbits</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">200% UP TO</span><span class="card-row-stat-value">$2,000</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">FREE SPINS</span><span class="card-row-stat-value">250</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Wagerless</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sportsbetting</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Live casino</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="duelbits">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Ritzo (Spinsino) -->
+              <article class="casino-card casino-card--list casino-card--row" id="ritzo-bonus-card" data-provider="ritzo">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(16, 185, 129, 0.18), transparent 60%),
+                  linear-gradient(90deg, #081418 0%, #0f1e20 50%, #051012 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/ritzo-banner.png" alt="Ritzo" /></div>
+                  <div class="card-row-name">Ritzo</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">175% UP TO</span><span class="card-row-stat-value">€1,000</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">FREE SPINS</span><span class="card-row-stat-value">75</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fast withdrawals</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Great game selection</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Live support</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="ritzo">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <!-- iViBet (DepositWin) -->
+              <article class="casino-card casino-card--list casino-card--row" id="ivibet-bonus-card" data-provider="ivibet">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(124, 58, 237, 0.22), transparent 60%),
+                  linear-gradient(90deg, #0f0a1c 0%, #18112d 50%, #090513 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/ivibet.png" alt="Ivibet" /></div>
+                  <div class="card-row-name">Ivibet</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">100% UP TO</span><span class="card-row-stat-value">€400</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">FREE SPINS</span><span class="card-row-stat-value">100</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">SIGNUP SPINS</span><span class="card-row-stat-value">50</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Wager-free bonuses</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Crypto bonus</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Loyalty program</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="ivibet">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <!-- StakePrix (Horus) -->
+              <article class="casino-card casino-card--list casino-card--row" id="stakeprix-bonus-card" data-provider="stakeprix">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(255, 207, 64, 0.22), transparent 60%),
+                  linear-gradient(90deg, #151108 0%, #1e1a0f 50%, #100e06 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/stakeprixbanner.png" alt="StakePrix" /></div>
+                  <div class="card-row-name">StakePrix</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">250% UP TO</span><span class="card-row-stat-value">€1,000</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">FREE SPINS</span><span class="card-row-stat-value">125</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No wager bonus</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>24 hour withdrawal</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Casino Challenges</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="stakeprix">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Thunderpick (Yep!) -->
+              <article class="casino-card casino-card--list casino-card--row" id="thunderpick-bonus-card" data-provider="thunderpick">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(255, 107, 157, 0.2), transparent 60%),
+                  linear-gradient(90deg, #160a14 0%, #1f101b 50%, #0f070d 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/thunderpick.png" alt="Thunderpick" /></div>
+                  <div class="card-row-name">Thunderpick</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">100% UP TO</span><span class="card-row-stat-value">€1,000</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">FREE SPINS</span><span class="card-row-stat-value">100</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>24/7 support</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bonus package available</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Thousands of games</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="thunderpick">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Flush (Slotoro) -->
+              <article class="casino-card casino-card--list casino-card--row" id="flush-bonus-card" data-provider="flush">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(167, 139, 250, 0.22), transparent 60%),
+                  linear-gradient(90deg, #110d1c 0%, #1c1430 50%, #0a0714 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/flush.png" alt="Flush" /></div>
+                  <div class="card-row-name">Flush</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">200% UP TO</span><span class="card-row-stat-value">€500</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Welcome package available</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Numerous providers</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>High withdrawal limits</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="flush">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <!-- AceBet (BC Game) -->
+              <article class="casino-card casino-card--list casino-card--row" id="acebet-bonus-card" data-provider="acebet">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(245, 158, 75, 0.2), transparent 60%),
+                  linear-gradient(90deg, #14100a 0%, #1e1810 50%, #0e0b07 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/acebet.png" alt="AceBet" /></div>
+                  <div class="card-row-name">AceBet</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">500% UP TO</span><span class="card-row-stat-value">∞</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Monthly bonus</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No upper cap</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Numerous languages</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="acebet">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+            </div>
+          </section>
+
+
+
+        </main>
+
+        <!-- =========================================================
+             FOOTER — Premium AntonGambles (full-width)
+             ========================================================= -->
+        <footer class="site-footer">
+          <div class="footer-inner">
+
+            <!-- TOP SECTION: Brand + 3 col + Socials -->
+            <div class="footer-grid">
+
+              <!-- COL 1: BRAND -->
+              <div class="footer-col footer-col--brand">
+                <a href="./" class="footer-logo">
+                  <img src="assets/antonpng.png" alt="AntonGambles" />
+                </a>
+                <p class="footer-tagline">
+                  Exclusive casino bonuses &amp; offers for the AntonGambles community.
+                </p>
+
+                <!-- 18+ + Responsible block -->
+                <div class="footer-responsible">
+                  <div class="fr-badge">18+</div>
+                  <div class="fr-text">
+                    Gamble responsibly. Set a time and money limit. Never chase losses.
+                    <a href="https://www.begambleaware.org" target="_blank" rel="noopener noreferrer">BeGambleAware.org</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COL 2: QUICK LINKS -->
+              <div class="footer-col">
+                <h4 class="footer-col-title">Quick Links</h4>
+                <ul class="footer-links">
+                  <li><a href="./">Casino Bonuses</a></li>
+                  <li><a href="./shop/">AG Points Store</a></li>
+                  <li><a href="./giveaways/">Giveaways</a></li>
+                  <li><a href="./bonus-hunt/">Bonus Hunt</a></li>
+                  <li><a href="./levels/">Levels</a></li>
+                  <li><a href="./leaderboard/">Leaderboard</a></li>
+                </ul>
+              </div>
+
+              <!-- COL 3: GAMES + SUPPORT -->
+              <div class="footer-col">
+                <h4 class="footer-col-title">Games</h4>
+                <ul class="footer-links">
+                  <li><a href="./blackjack/">Blackjack</a></li>
+                  <li><a href="./keno/">Keno</a></li>
+                </ul>
+                <h4 class="footer-col-title footer-col-title--spaced">Support</h4>
+                <ul class="footer-links">
+                  <li><a href="https://discord.gg/t7hNWHX6GW" target="_blank" rel="noopener noreferrer">Discord Server</a></li>
+                  <li><a href="mailto:contact@antongambles.com">Contact</a></li>
+                </ul>
+              </div>
+
+              <!-- COL 4: SOCIALS -->
+              <div class="footer-col">
+                <h4 class="footer-col-title">Follow AntonGambles</h4>
+                <div class="footer-socials">
+                  <a href="https://twitch.tv/antongambles" target="_blank" rel="noopener noreferrer" class="fs-btn fs-btn--twitch" aria-label="Twitch">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2 L2 6v14h5v2h3l2-2h4l5-5V2 H4 Zm16 10l-3 3h-4l-2 2v-2H6V4h14v8Z"/><path d="M16 6 h2 v6 h-2 z M11 6 h2 v6 h-2 z"/></svg>
+                    <span>Twitch</span>
+                  </a>
+                  <a href="https://discord.gg/t7hNWHX6GW" target="_blank" rel="noopener noreferrer" class="fs-btn fs-btn--discord" aria-label="Discord">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 4.5a16.6 16.6 0 0 0-4.1-1.3l-.5 1.1a15.4 15.4 0 0 0-4.9 0l-.5-1.1a16.6 16.6 0 0 0-4.1 1.3C2.9 8 2.4 11.4 2.6 14.8c1.6 1.2 3.3 2.1 5.2 2.7l1-1.7c-.6-.2-1.2-.5-1.8-.9l.4-.3c3.3 1.5 7 1.5 10.4 0l.4.3c-.6.4-1.2.7-1.8.9l1 1.7c1.9-.6 3.6-1.5 5.2-2.7.3-3.7-.3-7.1-2.8-10.3ZM9.3 13.3c-.7 0-1.3-.7-1.3-1.5 0-.8.6-1.5 1.3-1.5s1.3.7 1.3 1.5c0 .8-.6 1.5-1.3 1.5Zm5.4 0c-.7 0-1.3-.7-1.3-1.5 0-.8.6-1.5 1.3-1.5s1.3.7 1.3 1.5c0 .8-.6 1.5-1.3 1.5Z"/></svg>
+                    <span>Discord</span>
+                  </a>
+                  <a href="https://instagram.com/antongambles" target="_blank" rel="noopener noreferrer" class="fs-btn fs-btn--insta" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    <span>Instagram</span>
+                  </a>
+                </div>
+                <div class="footer-newsletter">
+                  <div class="fn-label">NEW CUSTOMER AD</div>
+                  <div class="fn-sub">All offers are 18+. T&amp;C apply.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BOTTOM BAR -->
+            <div class="footer-bottom">
+              <div class="fb-left">
+                <span class="fb-copyright">© 2026 AntonGambles. All rights reserved.</span>
+              </div>
+              <div class="fb-mid">
+                <a href="#">Privacy Policy</a>
+                <span class="fb-sep">·</span>
+                <a href="#">Terms of Service</a>
+                <span class="fb-sep">·</span>
+                <a href="#">Responsible Play</a>
+                <span class="fb-sep">·</span>
+                <a href="#">Cookies</a>
+              </div>
+              <div class="fb-right">
+                <span class="fb-site">antongambles.com</span>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+
+    <!-- Chat widget (låg prioritet, kvar för funktionalitet) -->
+    <button class="chat-bubble" id="chat-bubble-toggle" aria-label="Open chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span class="chat-bubble-unread" id="chat-unread-count" hidden>0</span>
+    </button>
+
+    <!-- Leaderboard FAB -->
+    <a href="./leaderboard/" class="leaderboard-fab" id="leaderboard-fab" aria-label="Leaderboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+    </a>
+
+    <!-- LOGIN MODAL — UPPEATERAD FÖR DISCORD AUTH -->
+    <div class="modal-overlay" id="login-modal">
+      <div class="modal modal--sm login-modal" role="dialog" aria-modal="true">
+        <button class="modal-close" id="close-modal" data-modal-close type="button" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="login-head">
+          <div class="login-logo-wrap">
+            <img src="assets/antonpng.png" alt="Antongambles" class="login-logo" />
+          </div>
+          <h2 class="login-title">Welcome back</h2>
+          <p class="login-sub">Connect your Discord to track progress, bonuses, and chat.</p>
+        </div>
+
+        <!-- SERVER REQUIREMENT CARD -->
+        <div class="login-requirement-card" id="login-requirement-card">
+          <div class="requirement-head">
+            <div class="requirement-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.54 4.5a16.6 16.6 0 0 0-4.1-1.3l-.5 1.1a15.4 15.4 0 0 0-4.9 0l-.5-1.1a16.6 16.6 0 0 0-4.1 1.3C2.9 8 2.4 11.4 2.6 14.8c1.6 1.2 3.3 2.1 5.2 2.7l1-1.7c-.6-.2-1.2-.5-1.8-.9l.4-.3c3.3 1.5 7 1.5 10.4 0l.4.3c-.6.4-1.2.7-1.8.9l1 1.7c1.9-.6 3.6-1.5 5.2-2.7.3-3.7-.3-7.1-2.8-10.3Z"/></svg>
+            </div>
+            <div class="requirement-copy">
+              <div class="requirement-title">Join the AntonGambles Discord</div>
+              <div class="requirement-sub">Required to chat, claim bonuses & track progress.</div>
+            </div>
+            <a href="https://discord.gg/t7hNWHX6GW" target="_blank" rel="noopener noreferrer" class="btn-discord-join" id="discord-join-btn" type="button">
+              Join Server
+            </a>
+          </div>
+          <label class="checkbox-row">
+            <input type="checkbox" id="discord-joined-confirm" />
+            <span class="checkbox-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>I've joined the Discord server</span>
+          </label>
+        </div>
+
+        <!-- AGE CHECK -->
+        <label class="checkbox-row checkbox-row--age">
+          <input type="checkbox" id="age-confirm" />
+          <span class="checkbox-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span>I am <b>18 years or older</b> and agree to the Terms</span>
+        </label>
+
+        <!-- CONTINUE BUTTON -->
+        <button class="btn-login-discord" id="discord-modal-btn" type="button">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="login-discord-svg" aria-hidden="true">
+            <path d="M19.54 4.5a16.6 16.6 0 0 0-4.1-1.3l-.5 1.1a15.4 15.4 0 0 0-4.9 0l-.5-1.1a16.6 16.6 0 0 0-4.1 1.3C2.9 8 2.4 11.4 2.6 14.8c1.6 1.2 3.3 2.1 5.2 2.7l1-1.7c-.6-.2-1.2-.5-1.8-.9l.4-.3c3.3 1.5 7 1.5 10.4 0l.4.3c-.6.4-1.2.7-1.8.9l1 1.7c1.9-.6 3.6-1.5 5.2-2.7.3-3.7-.3-7.1-2.8-10.3ZM9.3 13.3c-.7 0-1.3-.7-1.3-1.5 0-.8.6-1.5 1.3-1.5s1.3.7 1.3 1.5c0 .8-.6 1.5-1.3 1.5Zm5.4 0c-.7 0-1.3-.7-1.3-1.5 0-.8.6-1.5 1.3-1.5s1.3.7 1.3 1.5c0 .8-.6 1.5-1.3 1.5Z"/>
+          </svg>
+          <span>Continue with Discord</span>
+        </button>
+
+        <!-- FEEDBACK -->
+        <div class="login-modal-feedback" id="login-modal-feedback" role="status" aria-live="polite"></div>
+
+        <div class="login-foot">
+          <span class="login-foot-tc">Secure login — powered by Discord OAuth2.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASINO INFO MODAL -->
+    <div class="modal-overlay" id="casino-info-modal">
+      <div class="modal casino-info-modal" role="dialog" aria-modal="true" aria-labelledby="casino-info-title">
+        <button class="modal-close casino-info-close" data-modal-close type="button" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+        <div class="ci-header">
+          <span class="ci-tag" id="ci-tag">CRYPTO</span>
+        </div>
+
+        <div class="ci-logo-wrap">
+          <img id="ci-logo" class="ci-logo" src="" alt="Casino logo" />
+          <div id="ci-name" class="ci-name">Casino</div>
+        </div>
+
+        <p class="ci-intro" id="ci-intro">Welcome offer live now with fast payouts and plenty of bonus slots.</p>
+
+        <!-- BONUS PACKAGE TABLE -->
+        <div class="ci-section">
+          <h3 class="ci-section-title">Bonus Package</h3>
+          <div class="ci-bonus-grid">
+            <div class="ci-bonus-cell"><span class="ci-bonus-label">Bonus %</span><span class="ci-bonus-value" id="ci-bonus-pct">200%</span></div>
+            <div class="ci-bonus-cell"><span class="ci-bonus-label">Max Amount</span><span class="ci-bonus-value" id="ci-bonus-max">$3,000</span></div>
+            <div class="ci-bonus-cell"><span class="ci-bonus-label">Free Spins</span><span class="ci-bonus-value" id="ci-freespins">200</span></div>
+            <div class="ci-bonus-cell"><span class="ci-bonus-label">Wagering</span><span class="ci-bonus-value ci-bonus-value--x" id="ci-wager">x35</span></div>
+          </div>
+        </div>
+
+        <!-- CASINO INFO -->
+        <div class="ci-section">
+          <h3 class="ci-section-title">Casino Info</h3>
+          <div class="ci-info-grid">
+            <div class="ci-info-item"><span class="ci-info-label">Minimum Deposit</span><span class="ci-info-value" id="ci-min-dep">$20</span></div>
+            <div class="ci-info-item"><span class="ci-info-label">Maximum Withdrawal</span><span class="ci-info-value" id="ci-max-wd">Unlimited</span></div>
+            <div class="ci-info-item"><span class="ci-info-label">Withdrawal Time</span><span class="ci-info-value" id="ci-wd-time">Instant</span></div>
+            <div class="ci-info-item"><span class="ci-info-label">Crypto Friendly</span><span class="ci-info-value" id="ci-crypto">Yes</span></div>
+            <div class="ci-info-item"><span class="ci-info-label">Live Support</span><span class="ci-info-value" id="ci-support">Yes</span></div>
+            <div class="ci-info-item"><span class="ci-info-label">Established</span><span class="ci-info-value" id="ci-established">2024</span></div>
+          </div>
+        </div>
+
+        <!-- LICENCES -->
+        <div class="ci-section ci-section--slim">
+          <h3 class="ci-section-title">Licences</h3>
+          <p class="ci-text" id="ci-licences">Curaçao</p>
+        </div>
+
+        <!-- LANGUAGES -->
+        <div class="ci-section ci-section--slim">
+          <h3 class="ci-section-title">Languages</h3>
+          <p class="ci-text" id="ci-languages">English, German, French, Spanish, Swedish, Norwegian, Finnish, Portuguese</p>
+        </div>
+
+        <!-- DEPOSIT METHODS -->
+        <div class="ci-section ci-section--slim">
+          <h3 class="ci-section-title">Deposit Methods</h3>
+          <p class="ci-text" id="ci-payments">Visa, Mastercard, Bitcoin, Ethereum, Litecoin, USDT, Bank Transfer</p>
+        </div>
+
+        <!-- SITE PREVIEW (SCREENSHOT) — DYNAMIC: visible only if provider has screenshot in map -->
+        <div class="promo-screen-section" id="ci-screen-section" style="display:none;">
+          <div class="section-title promo-screen-title">
+            <span>Site Preview</span>
+            <span class="promo-screen-badge">Click to expand</span>
+          </div>
+          <button type="button" class="browser-mockup browser-mockup--clickable" id="ci-browser-mockup-btn" aria-label="Expand site preview screenshot">
+            <div class="browser-mockup-top">
+              <div class="browser-dots">
+                <span class="b-dot b-dot--red"></span>
+                <span class="b-dot b-dot--amber"></span>
+                <span class="b-dot b-dot--green"></span>
+              </div>
+              <div class="browser-bar">
+                <span class="browser-lock" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </span>
+                <span class="browser-url" id="ci-browser-url">casino.example</span>
+                <span class="browser-expand" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="browser-mockup-body">
+              <img class="browser-mockup-img" id="ci-browser-img" src="" alt="Casino site preview screenshot" loading="lazy" />
+              <div class="browser-mockup-overlay">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                <span>Click to expand</span>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <!-- SCREENSHOT LIGHTBOX -->
+        <div class="screenshot-lightbox" id="screenshot-lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+          <button class="screenshot-lightbox-close" type="button" aria-label="Close preview">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+          <div class="screenshot-lightbox-inner">
+            <div class="screenshot-lightbox-bar">
+              <span class="screenshot-lightbox-title" id="screenshot-lightbox-title">Site Preview</span>
+              <a class="screenshot-lightbox-open" id="screenshot-lightbox-open" href="#" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <span>Open site</span>
+              </a>
+            </div>
+            <div class="screenshot-lightbox-frame">
+              <img id="screenshot-lightbox-img" src="" alt="Expanded casino site preview" />
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA + T&C -->
+        <div class="ci-footer">
+          <button class="ci-claim" id="ci-claim-btn">
+            <span class="claim-btn-shine"></span>
+            <span>Claim Bonus</span>
+          </button>
+          <p class="ci-foot-note">T&amp;C APPLY · 18+ · NEW CUSTOMERS ONLY · BEGAMBLEAWARE.ORG · AD</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  </body>
+</html>

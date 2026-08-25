@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="ag-site-url" content="http://localhost:8000">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · Bonus Hunt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="../styles.css?v=479" />
+</head>
+<body class="admin-body admin-body--bonus">
+  <div class="admin-wrap">
+    <header class="admin-header">
+      <div class="admin-header-title">
+        <div class="admin-header-icon">🎰</div>
+        <div>
+          <h1>Bonus Hunt Admin</h1>
+          <div class="admin-header-sub">Phase control, predictions overview, finalize &amp; announce winners.</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="bh-wrap">
+        <!-- Header where HUGE admin primary CTA goes -->
+        <div class="bh-stream-tool-row">
+          <div class="bh-title-row">
+            <h2 class="bh-title">Control Panel</h2>
+          </div>
+        </div>
+
+        <!-- Status & Phase Summary -->
+        <section class="bh-panel bh-phase-panel">
+          <div class="bh-phase-head">
+            <div>
+              <div class="bh-phase-eyebrow">Prediction State</div>
+              <div id="bh-phase-label" class="bh-phase-label">Idle</div>
+            </div>
+            <div id="bh-phase-dot" class="bh-phase-dot bh-phase-dot--idle"></div>
+          </div>
+          <div class="bh-phase-body">
+            <div id="bh-phase-summary" class="bh-phase-summary">
+              Waiting for admin to open bets.
+            </div>
+            <div class="bh-meta">
+              <div><span>Total Predictions:</span><strong id="bh-stat-total">0</strong></div>
+              <div><span>Avg Guess:</span><strong id="bh-stat-avg">$0</strong></div>
+              <div><span>Median:</span><strong id="bh-stat-median">$0</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick Actions Row (secondary small admin buttons land here) -->
+        <div class="bh-actions">
+          <button type="button" id="bh-copy-result" class="bh-btn bh-btn--ghost bh-btn--sm" style="display:none">📋 Copy Result</button>
+          <div class="bh-actions-right"></div>
+        </div>
+
+        <!-- Predictions list (admin view) -->
+        <section class="bh-panel bh-panel-list">
+          <div class="bh-panel-head">
+            <h3 class="bh-panel-title">📊 Viewer Predictions</h3>
+            <div id="bh-predictions-count" class="bh-panel-sub">0 submitted</div>
+          </div>
+          <div id="bh-predictions-list" class="bh-list">
+            <div class="agp-empty">No predictions yet.</div>
+          </div>
+        </section>
+
+        <!-- Winner / Result summary -->
+        <section id="bh-result-panel" class="bh-panel bh-result-panel is-hidden">
+          <div class="bh-result-head">
+            <div class="bh-result-eyebrow">🏆 Final Result</div>
+            <h3 id="bh-result-title" class="bh-result-title">Winner</h3>
+          </div>
+          <div id="bh-result-body" class="bh-result-body"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="login-modal" class="modal-overlay" style="display:none"></div>
+
+  <script src="../app.js?v=479" defer></script>
+  <script src="../bonus-hunt/bonus-hunt.js?v=479" defer></script>
+</body>
+</html>

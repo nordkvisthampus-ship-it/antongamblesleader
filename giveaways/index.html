@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="ag-site-url" content="http://localhost:8000">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giveaways — Coming Soon | AntonGambles</title>
+    <meta name="description" content="Giveaways are launching soon on AntonGambles. Deposit proof, bonuses and exclusive prize raffles for the community." />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <meta name="theme-color" content="#070707" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css?v=484" />
+    <script>window.__GIVEAWAYS_SKIP_APP_FX__ = true; window.__NO_ADMIN_PUBLIC_UI__ = true;</script>
+    <script src="../app.js?v=484" defer></script>
+  </head>
+  <body>
+    <div id="bg-particles" class="bg-particles" aria-hidden="true"></div>
+
+    <div class="sidebar-brand">
+      <a href="../" class="sidebar-brand-logo">
+        <span class="sidebar-logo-wrap">
+          <img src="../assets/antonpng.png" alt="Anton" class="sidebar-logo-avatar" />
+        </span>
+        <span class="sidebar-logo-text">Anton<span class="logo-accent">Gambles</span></span>
+      </a>
+      <button type="button" id="sidebar-collapse" class="sidebar-collapse-btn" aria-label="Minimize sidebar" aria-expanded="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+      </button>
+    </div>
+
+    <!-- TOP BAR (matchar casino layout) -->
+    <header class="top-bar">
+      <div class="top-bar-inner">
+        <div class="top-bar-left">
+          <a href="../" class="back-btn" aria-label="Back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </a>
+          <a href="../" class="top-bar-logo">
+            <span class="logo-text">Anton<span class="logo-accent">Gambles</span></span>
+          </a>
+        </div>
+        <div class="top-bar-center">
+          <div class="top-wallet-combo" id="wallet-btn" role="group" aria-label="Wallet">
+            <button class="top-wallet-pill" id="top-wallet-dropdown" type="button" aria-haspopup="dialog" aria-expanded="false">
+              <span class="twp-balance">
+                <span class="twp-cash" id="twp-cash">$0.00</span>
+                <span class="twp-sep">·</span>
+                <span class="twp-coins" id="twp-coins">0 AG</span>
+              </span>
+              <span class="twp-chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </button>
+            <button class="top-wallet-cta" id="top-wallet-cta" type="button">
+              <svg class="twc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+              <span>Wallet</span>
+            </button>
+          </div>
+          <button class="info-icon-btn" aria-label="Info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </button>
+        </div>
+        <div class="top-bar-right">
+          <button class="top-icon-btn" aria-label="Search" id="top-search-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+          <button class="top-icon-btn" aria-label="Notifications" id="top-notif-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.52 2.76a2 2 0 0 1 4.96 0c1.05.22 2.04.73 2.9 1.47a4.8 4.8 0 0 1 1.38 3.37c0 .79.15 1.57.44 2.27l1.14 2.77a1.7 1.7 0 0 1-1.56 2.3H5.16a1.7 1.7 0 0 1-1.56-2.3l1.14-2.77c.29-.7.44-1.48.44-2.27a4.8 4.8 0 0 1 1.38-3.37c.86-.74 1.85-1.25 2.9-1.47Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+            <span class="notif-dot"></span>
+          </button>
+          <button class="login-btn" id="discord-login-btn" aria-haspopup="true" aria-expanded="false">
+            <span>LOGIN</span>
+          </button>
+
+          <div id="profile-dropdown-menu" class="profile-dropdown-menu" style="display:none;">
+            <button id="view-profile-btn" class="profile-dropdown-item" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>View Profile</span>
+            </button>
+            <button id="levels-btn" class="profile-dropdown-item" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L15 8 L22 9 L17 14 L18 21 L12 18 L6 21 L7 14 L2 9 L9 8 Z"/><path d="M9 15a3 3 0 1 0 6 0 3 3 0 1 0-6 0"/></svg>
+              <span>Levels</span>
+            </button>
+            <div class="profile-dropdown-sep"></div>
+            <button id="logout-btn" class="profile-dropdown-item profile-dropdown-item--danger" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <!-- SIDEBAR NY DESIGN — samma som casino/leaderboard -->
+      <aside class="app-sidebar sidebar--new" aria-label="Main navigation">
+        <nav class="sidebar-nav sidebar-nav--new">
+
+          <div class="sidebar-section">
+            <span class="sidebar-section-label">Bonuses &amp; Offers</span>
+            <a href="../" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.9 4.9 2.8 2.8"/><path d="m16.2 16.2 2.8 2.8"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.9 19.1 2.8-2.8"/><path d="m16.2 7.8 2.8-2.8"/><circle cx="12" cy="12" r="5"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+              <span>Casino Bonuses</span>
+            </a>
+            <a href="./" class="sidebar-nav-item sidebar-nav-item--new active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+              <span>Giveaways</span>
+            </a>
+            <a href="../shop/" class="sidebar-nav-item sidebar-nav-item--new sidebar-nav-item--accent">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/><path d="M13 9V3M10 6h6"/></svg>
+              <span>Store</span>
+            </a>
+          </div>
+
+          <div class="sidebar-section">
+            <span class="sidebar-section-label">Games</span>
+            <a href="../blackjack/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 10h10"/><path d="M7 14h6"/><path d="M6 6v.01"/><path d="M18 6v.01"/><path d="M18 18v.01"/><path d="M6 18v.01"/></svg>
+              <span>Blackjack</span>
+            </a>
+            <a href="../keno/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v6h-3v14H9V8H6z"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="18" r="1.5"/><circle cx="6" cy="18" r="1.5"/></svg>
+              <span>Keno</span>
+            </a>
+          </div>
+
+          <div class="sidebar-section">
+            <span class="sidebar-section-label">Quick Links</span>
+            <a href="https://gambid.gg/?r=anton" target="_blank" rel="noopener noreferrer" class="sidebar-nav-item sidebar-nav-item--new sidebar-nav-item--primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span>Gambid.gg</span>
+            </a>
+            <a href="../leaderboard/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
+              <span>Leaderboard</span>
+            </a>
+            <a href="../bonus-hunt/" class="sidebar-nav-item sidebar-nav-item--new">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5" rx="1"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+              <span>Bonus Hunt</span>
+            </a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT: wrap innehåller Giveaway sektionen + footer -->
+      <div class="app-main">
+        <main class="wrap">
+          <section class="cs-page">
+            <div class="cs-page__card">
+              <div class="cs-page__eyebrow">🎁 BONUSES · GIVEAWAYS</div>
+              <h1 class="cs-page__title">Coming <span>Soon</span></h1>
+              <div class="cs-page__feature">Community Giveaways & Raffles</div>
+              <p class="cs-page__desc">
+                We're setting up the giveaways. Deposit proof, bonuses and exclusive prize raffles for the community — launching very soon.
+              </p>
+              <div class="cs-page__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="cs-page__actions">
+                <a href="../" class="cs-page__btn cs-page__btn--primary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.9 4.9 2.8 2.8"/><path d="m16.2 16.2 2.8 2.8"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.9 19.1 2.8-2.8"/><path d="m16.2 7.8 2.8-2.8"/><circle cx="12" cy="12" r="5"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                  Browse Casino Bonuses
+                </a>
+                <a href="../leaderboard/" class="cs-page__btn cs-page__btn--ghost">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
+                  Gambid Wager Race
+                </a>
+              </div>
+              <div class="cs-page__foot">Launching very soon 🚀</div>
+            </div>
+          </section>
+        </main>
+
+        <!-- =========================================================
+             FOOTER — Premium AntonGambles (full-width)
+             ========================================================= -->
+        <footer class="site-footer">
+          <div class="footer-inner">
+            <div class="footer-grid">
+              <div class="footer-col footer-col--brand">
+                <a href="../" class="footer-logo">
+                  <img src="../assets/antonpng.png" alt="AntonGambles" />
+                </a>
+                <p class="footer-tagline">Exclusive casino bonuses &amp; offers for the AntonGambles community.</p>
+                <div class="footer-responsible">
+                  <div class="fr-badge">18+</div>
+                  <div class="fr-text">Gamble responsibly. Set a time and money limit. Never chase losses. <a href="https://www.begambleaware.org" target="_blank" rel="noopener noreferrer">BeGambleAware.org</a></div>
+                </div>
+              </div>
+              <div class="footer-col">
+                <h4 class="footer-col-title">Quick Links</h4>
+                <ul class="footer-links">
+                  <li><a href="../">Casino Bonuses</a></li>
+                  <li><a href="../shop/">AG Points Store</a></li>
+                  <li><a href="../giveaways/">Giveaways</a></li>
+                  <li><a href="../bonus-hunt/">Bonus Hunt</a></li>
+                  <li><a href="../levels/">Levels</a></li>
+                  <li><a href="../leaderboard/">Leaderboard</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4 class="footer-col-title">Games</h4>
+                <ul class="footer-links">
+                  <li><a href="../blackjack/">Blackjack</a></li>
+                  <li><a href="../keno/">Keno</a></li>
+                </ul>
+                <h4 class="footer-col-title footer-col-title--spaced">Support</h4>
+                <ul class="footer-links">
+                  <li><a href="https://discord.gg/t7hNWHX6GW" target="_blank" rel="noopener noreferrer">Discord Server</a></li>
+                  <li><a href="mailto:contact@antongambles.com">Contact</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4 class="footer-col-title">Follow AntonGambles</h4>
+                <div class="footer-socials">
+                  <a href="https://twitch.tv/antongambles" target="_blank" rel="noopener noreferrer" class="fs-btn fs-btn--twitch" aria-label="Twitch"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2 L2 6v14h5v2h3l2-2h4l5-5V2 H4 Zm16 10l-3 3h-4l-2 2v-2H6V4h14v8Z"/><path d="M16 6 h2 v6 h-2 z M11 6 h2 v6 h-2 z"/></svg><span>Twitch</span></a>
+                  <a href="https://discord.gg/t7hNWHX6GW" target="_blank" rel="noopener noreferrer" class="fs-btn fs-btn--discord" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 4.5a16.6 16.6 0 0 0-4.1-1.3l-.5 1.1a15.4 15.4 0 0 0-4.9 0l-.5-1.1a16.6 16.6 0 0 0-4.1 1.3C2.9 8 2.4 11.4 2.6 14.8c1.6 1.2 3.3 2.1 5.2 2.7l1-1.7c-.6-.2-1.2-.5-1.8-.9l.4-.3c3.3 1.5 7 1.5 10.4 0l.4.3c-.6.4-1.2.7-1.8.9l1 1.7c1.9-.6 3.6-1.5 5.2-2.7.3-3.7-.3-7.1-2.8-10.3ZM9.3 13.3c-.7 0-1.3-.7-1.3-1.5 0-.8.6-1.5 1.3-1.5s1.3.7 1.3 1.5c0 .8-.6 1.5-1.3 1.5Zm5.4 0c-.7 0-1.3-.7-1.3-1.5 0-.8.6-1.5 1.3-1.5s1.3.7 1.3 1.5c0 .8-.6 1.5-1.3 1.5Z"/></svg><span>Discord</span></a>
+                  <a href="https://instagram.com/antongambles" target="_blank" rel="noopener noreferrer" class="fs-btn fs-btn--insta" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4Z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><span>Instagram</span></a>
+                </div>
+                <div class="footer-newsletter">
+                  <div class="fn-label">NEW CUSTOMER AD</div>
+                  <div class="fn-sub">All offers are 18+. T&amp;C apply.</div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <div class="fb-left"><span class="fb-copyright">© 2026 AntonGambles. All rights reserved.</span></div>
+              <div class="fb-mid">
+                <a href="#">Privacy Policy</a><span class="fb-sep">·</span>
+                <a href="#">Terms of Service</a><span class="fb-sep">·</span>
+                <a href="#">Responsible Play</a><span class="fb-sep">·</span>
+                <a href="#">Cookies</a>
+              </div>
+              <div class="fb-right"><span class="fb-site">antongambles.com</span></div>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+
+    <!-- Chat widget + Leaderboard FAB (samma som casino sidan!) -->
+    <button class="chat-bubble" id="chat-bubble-toggle" aria-label="Open chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span class="chat-bubble-unread" id="chat-unread-count" hidden>0</span>
+    </button>
+
+    <a href="../leaderboard/" class="leaderboard-fab" id="leaderboard-fab" aria-label="Leaderboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+    </a>
+
+    <!-- Login Modal (befintlig fungerande design) -->
+    <div id="login-modal" class="modal-overlay">
+      <div class="modal-content login-modal-content">
+        <button id="close-modal" class="modal-close">&times;</button>
+        <div class="login-modal-hero">
+          <div class="login-modal-eyebrow">Community Access</div>
+          <h2 class="modal-title login-modal-title">Log In With Discord</h2>
+          <p class="login-modal-copy">
+            You must be in the AntonGambles Discord to log in.
+          </p>
+        </div>
+
+        <div id="login-requirement-card" class="login-modal-requirement">
+          <div class="login-modal-requirement-head">
+            <div>
+              <div class="login-modal-requirement-title">Step 1</div>
+              <div class="login-modal-requirement-label">Join Discord First</div>
+            </div>
+            <span class="login-modal-step-badge">Required</span>
+          </div>
+          <div class="login-modal-requirement-copy">
+            Join the server first or your login will be denied.
+          </div>
+          <div class="login-modal-actions-row">
+            <a
+              id="discord-join-btn"
+              class="login-modal-join-btn"
+              href="https://discord.gg/t7hNWHX6GW"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join Discord
+            </a>
+            <label class="login-modal-confirm login-modal-confirm-join" for="discord-joined-confirm">
+              <input type="checkbox" id="discord-joined-confirm">
+              <span>I have joined the Discord server</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="login-modal-requirement is-secondary">
+          <div class="login-modal-requirement-head">
+            <div>
+              <div class="login-modal-requirement-title">Step 2</div>
+              <div class="login-modal-requirement-label">Confirm 18+</div>
+            </div>
+          </div>
+          <div class="login-modal-requirement-copy">
+            Confirm that you are 18+ and have read our
+            <a href="../terms.html" class="modal-link" target="_blank" rel="noopener noreferrer">terms</a>.
+          </div>
+          <label class="login-modal-confirm" for="age-confirm">
+            <input type="checkbox" id="age-confirm">
+            <span>I confirm that I am over 18 years old</span>
+          </label>
+        </div>
+
+        <div id="login-modal-feedback" class="login-modal-feedback" aria-live="polite"></div>
+
+        <button id="discord-modal-btn" class="modal-discord-btn" type="button">
+          <svg class="modal-discord-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.54 4.5a16.6 16.6 0 0 0-4.1-1.3l-.5 1.1a15.4 15.4 0 0 0-4.9 0l-.5-1.1a16.6 16.6 0 0 0-4.1 1.3C2.9 8 2.4 11.4 2.6 14.8c1.6 1.2 3.3 2.1 5.2 2.7l1-1.7c-.6-.2-1.2-.5-1.8-.9l.4-.3c3.3 1.5 7 1.5 10.4 0l.4.3c-.6.4-1.2.7-1.8.9l1 1.7c1.9-.6 3.6-1.5 5.2-2.7.3-3.7-.3-7.1-2.8-10.3ZM9.3 13.3c-.7 0-1.3-.7-1.3-1.5 0-.8.6-1.5 1.3-1.5s1.3.7 1.3 1.5c0 .8-.6 1.5-1.3 1.5Zm5.4 0c-.7 0-1.3-.7-1.3-1.5 0-.8.6-1.5 1.3-1.5s1.3.7 1.3 1.5c0 .8-.6 1.5-1.3 1.5Z"></path>
+          </svg>
+          Continue With Discord
+        </button>
+        <div class="login-modal-footnote">Join Discord first or your login will be denied.</div>
+      </div>
+    </div>
+
+    <!-- Wallet Modal -->
+    <div id="wallet-modal" class="modal-overlay">
+      <div class="modal-content wallet-content">
+        <button id="close-wallet" class="modal-close">&times;</button>
+        <h2 class="modal-title wallet-title">Wallet</h2>
+        <div class="points-balance">
+          <div class="wallet-balance-head">
+            <div>
+              <div class="points-label">Available Balance</div>
+              <div class="points-amount" id="wallet-points">0</div>
+              <div class="points-currency">Coins</div>
+            </div>
+            <div class="wallet-balance-side">
+              <div class="wallet-balance-tag">Easy Coin Rules</div>
+              <div class="wallet-balance-side-copy">Earn Coins in 4 simple ways: daily login, stay 5 minutes, click bonuses and watch the live stream.</div>
+            </div>
+          </div>
+        </div>
+                <div class="agp-rules-strip">
+          <div class="agp-rule-card">
+            <div class="agp-rule-label">Daily Login</div>
+            <div class="agp-rule-value">+10 Coins</div>
+            <div class="agp-rule-foot">Once per day</div>
+          </div>
+          <div class="agp-rule-card">
+            <div class="agp-rule-label">Stay 5 Min</div>
+            <div class="agp-rule-value">+5 Coins</div>
+            <div class="agp-rule-foot">Once per day</div>
+          </div>
+          <div class="agp-rule-card">
+            <div class="agp-rule-label">Bonus Click</div>
+            <div class="agp-rule-value">+2 Coins</div>
+            <div class="agp-rule-foot">2h cooldown</div>
+          </div>
+          <div class="agp-rule-card">
+            <div class="agp-rule-label">Live Stream</div>
+            <div class="agp-rule-value">+15 Coins</div>
+            <div class="agp-rule-foot">1h watch, 12h cooldown</div>
+          </div>
+        </div>
+        <div class="agp-overview">
+          <div class="agp-level-card">
+            <div class="agp-level-top">
+              <div>
+                <div class="agp-mini-label">Your Level</div>
+                <div class="agp-level-name" id="agp-level-name">Rookie</div>
+              </div>
+              <div class="agp-level-badge" id="agp-level-badge">LVL 1</div>
+            </div>
+            <div class="agp-level-progress-copy" id="agp-level-progress-copy">0 Coins until the next tier</div>
+            <div class="agp-level-progress">
+              <div class="agp-level-progress-fill" id="agp-level-progress-fill"></div>
+            </div>
+          </div>
+          <div class="agp-stats-grid">
+            <div class="agp-stat-card">
+              <div class="agp-mini-label">Streak</div>
+              <div class="agp-stat-value" id="agp-streak-value">0</div>
+              <div class="agp-stat-foot">days in a row</div>
+            </div>
+            <div class="agp-stat-card">
+              <div class="agp-mini-label">Total Earned</div>
+              <div class="agp-stat-value" id="agp-lifetime-value">0</div>
+              <div class="agp-stat-foot">all-time Coins earned</div>
+            </div>
+            <div class="agp-stat-card">
+              <div class="agp-mini-label">Leaderboard</div>
+              <div class="agp-stat-value" id="agp-rank-value">-</div>
+              <div class="agp-stat-foot">your current rank</div>
+            </div>
+          </div>
+        </div>
+        <div class="activities-section">
+          <h3 class="section-title">How To Earn Coins</h3>
+          <div class="activities-list">
+            <div class="activity-item">
+              <div class="activity-icon">DL</div>
+              <div class="activity-info">
+                <div class="activity-name">Daily Login</div>
+                <div class="activity-reward">+10 Coins per day</div>
+              </div>
+              <div class="activity-status" id="daily-status">Locked</div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon">5M</div>
+              <div class="activity-info">
+                <div class="activity-name">Stay On Site 5 Minutes</div>
+                <div class="activity-reward">+5 Coins once per day</div>
+              </div>
+              <div class="activity-status" id="visit-status">Locked</div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon">BC</div>
+              <div class="activity-info">
+                <div class="activity-name">Click Any Bonus</div>
+                <div class="activity-reward">+2 Coins per click | 2h cooldown</div>
+              </div>
+              <div class="activity-status" id="bonus-status">Ready</div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon">TW</div>
+              <div class="activity-info">
+                <div class="activity-name">Watch The Live Stream 1 Hour</div>
+                <div class="activity-reward">+15 Coins | 1h watch | 12h cooldown</div>
+              </div>
+              <div class="activity-status" id="stream-status">Locked</div>
+            </div>
+          </div>
+        </div>
+        <div class="agp-perks-section">
+          <h3 class="section-title">Level Milestones</h3>
+          <div class="agp-perks-list">
+            <div class="agp-perk-card" id="perk-card-rookie">
+              <div class="agp-perk-top">
+                <div class="agp-perk-name">Rookie</div>
+                <div class="agp-perk-cost">0 Coins</div>
+              </div>
+              <div class="agp-perk-copy">Your starting level.</div>
+            </div>
+            <div class="agp-perk-card" id="perk-card-grinder">
+              <div class="agp-perk-top">
+                <div class="agp-perk-name">Grinder</div>
+                <div class="agp-perk-cost">250 Coins</div>
+              </div>
+              <div class="agp-perk-copy">Unlocks at 250 Coins.</div>
+            </div>
+            <div class="agp-perk-card" id="perk-card-high-roller">
+              <div class="agp-perk-top">
+                <div class="agp-perk-name">High Roller</div>
+                <div class="agp-perk-cost">1,000 Coins</div>
+              </div>
+              <div class="agp-perk-copy">Unlocks at 1,000 Coins.</div>
+            </div>
+            <div class="agp-perk-card" id="perk-card-whale">
+              <div class="agp-perk-top">
+                <div class="agp-perk-name">Whale</div>
+                <div class="agp-perk-cost">3,000 Coins</div>
+              </div>
+              <div class="agp-perk-copy">Unlocks at 3,000 Coins.</div>
+            </div>
+            <div class="agp-perk-card agp-perk-card is-legend" id="perk-card-legend">
+              <div class="agp-perk-top">
+                <div class="agp-perk-name">Legend</div>
+                <div class="agp-perk-cost">7,500 Coins</div>
+              </div>
+              <div class="agp-perk-copy">The true grind tier. Unlocks at 7,500 Coins.</div>
+            </div>
+          </div>
+        </div>
+        <div class="agp-community-grid">
+          <div class="agp-panel">
+            <h3 class="section-title">Leaderboard</h3>
+            <div class="agp-leaderboard-list" id="agp-leaderboard-list">
+              <div class="agp-empty">Loading leaderboard...</div>
+            </div>
+          </div>
+          <div class="agp-panel">
+            <h3 class="section-title">Your Recent Rewards</h3>
+            <div class="agp-activity-feed" id="agp-activity-feed">
+              <div class="agp-empty">No activity yet.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image View Modal -->
+    <div id="gw-image-modal" class="modal-overlay">
+      <div class="modal-content gw-image-modal-content">
+        <button id="gw-image-close" class="modal-close">&times;</button>
+        <img id="gw-image-modal-img" class="gw-image-modal-img" alt="Deposit proof" />
+      </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  </body>
+</html>
