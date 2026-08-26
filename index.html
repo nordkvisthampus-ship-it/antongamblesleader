@@ -14,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=492" />
-    <script src="app.js?v=492" defer></script>
+    <link rel="stylesheet" href="styles.css?v=493" />
+    <script src="app.js?v=493" defer></script>
   </head>
   <body>
     <div id="bg-particles" class="bg-particles" aria-hidden="true"></div>
@@ -243,13 +243,14 @@
               <!-- LIVE COUNT -->
               <div class="fb-live">
                 <span class="fb-live-dot"></span>
-                <span class="fb-live-num" id="filter-result-num">14</span>
+                <span class="fb-live-num" id="filter-result-num">15</span>
                 <span class="fb-live-label">casinos</span>
               </div>
 
               <!-- SORT -->
               <div class="fb-group fb-group--sort" role="tablist" aria-label="Sort">
                 <button type="button" class="fb-chip fb-chip--sort is-active" data-sort="recommended" role="tab" aria-selected="true">Recommended</button>
+                <button type="button" class="fb-chip fb-chip--sort" data-sort="newest" role="tab" aria-selected="false">Newest</button>
               </div>
 
               <span class="fb-spacer" aria-hidden="true"></span>
@@ -592,6 +593,37 @@
                 </ul>
                 <div class="card-row-actions">
                   <button class="claim-btn claim-btn--row" data-claim="acebet">
+                    <span class="claim-btn-shine"></span>
+                    <span class="claim-btn-text">CLAIM BONUS</span>
+                  </button>
+                  <button class="card-info-btn card-info-btn--row" aria-label="More info" data-info-trigger>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Pubs.com -->
+              <article class="casino-card casino-card--list casino-card--row" id="pubs-bonus-card" data-provider="pubs">
+                <div class="card-bg-layer" style="background:
+                  radial-gradient(90% 120% at 5% 50%, rgba(251, 191, 36, 0.22), transparent 60%),
+                  linear-gradient(90deg, #140f05 0%, #1e170a 50%, #0d0a04 100%);">
+                </div>
+                <div class="card-row-brand">
+                  <div class="card-row-logo"><img src="assets/pubslogo.png" alt="Pubs" /></div>
+                  <div class="card-row-name">Pubs.com</div>
+                </div>
+                <div class="card-row-stats">
+                  <div class="card-row-stat"><span class="card-row-stat-label">100% UP TO</span><span class="card-row-stat-value">1,000 USDT</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                  <div class="card-row-stat"><span class="card-row-stat-label">&nbsp;</span><span class="card-row-stat-value">-</span></div>
+                </div>
+                <ul class="card-row-perks">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Safe Play</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Clear Terms</li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fast Payouts</li>
+                </ul>
+                <div class="card-row-actions">
+                  <button class="claim-btn claim-btn--row" data-claim="pubs">
                     <span class="claim-btn-shine"></span>
                     <span class="claim-btn-text">CLAIM BONUS</span>
                   </button>

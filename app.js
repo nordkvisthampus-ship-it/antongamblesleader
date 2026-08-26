@@ -313,6 +313,23 @@ const PROMO_INFO_META = {
       payments: "Visa, Mastercard, Bitcoin, Ethereum, Litecoin, USDT, Skrill, Neteller, Trustly, Klarna, Bank Transfer"
     }
   },
+  pubs: {
+    providers: ["Pragmatic Play", "Evolution", "Hacksaw Gaming", "Nolimit City", "BGaming"],
+    providerCopy: "Safe, trusted casino with crystal-clear bonus terms, instant payouts and a player-first approach to responsible gambling.",
+    url: "https://record.affiliatedrinks.com/_lMtWuaUunJhZSuvhn4yj1mNd7ZgqdRLk/1/?pg=1",
+    tag: "SAFE PLAY",
+    logo: "assets/pubslogo.png",
+    displayName: "Pubs.com",
+    intro: "Pubs.com welcome offer: Double your first deposit up to 1,000 USDT. Safe Play, Clear Terms, Fast Payouts. Player-first casino with transparent bonuses and lightning-fast withdrawals.",
+    richInfo: {
+      bonusPct: "100%", bonusMax: "1,000 USDT", freeSpins: "0",
+      wager: "x35", minDep: "20 USDT", maxWd: "Unlimited", wdTime: "Fast (crypto instant)",
+      crypto: true, support: true, established: "2024",
+      licences: "Curaçao",
+      languages: "English, Spanish, French, German, Portuguese, Norwegian, Swedish, Finnish, Polish, Italian",
+      payments: "Bitcoin, Ethereum, Litecoin, USDT, USDC, Visa, Mastercard, Bank Transfer, Skrill, Neteller"
+    }
+  },
 };
 
 const getPromoInfoMeta = (name) => {
@@ -772,6 +789,7 @@ const PROMO_SCREENSHOT_MAP = Object.freeze({
   shakebet: "assets/shakescreen.png",
   stakeprix: "assets/stakeprixscreen.png",
   thunderpick: "assets/thunderscreen.png",
+  pubs: "assets/pubsscreen.png",
 });
 
 const getPromoScreenshot = (providerOrCard) => {
@@ -4722,15 +4740,17 @@ const setupFilterBar = () => {
   };
 
   // Tag-regler: vilken casinon matchar vilka tags
-  const CRYPTO_PROVIDERS = new Set(["acebet", "shakebet", "duelbits", "stakeprix", "flush", "ritzo"]);
-  const FAST_PAYOUT_PROVIDERS = new Set(["gambid", "duelbits", "stakeprix", "shakebet", "acebet", "flush"]);
-  const LIVE_CASINO_PROVIDERS = new Set(["lollyspins", "shakebet", "duelbits", "thunderpick", "flush", "ivibet", "ritzo", "gambid", "acebet"]);
-  const EXCLUSIVE_PROVIDERS = new Set(["gambid", "stakeprix", "lollyspins", "acebet", "shakebet"]);
-  const RECOMMENDED_ORDER = ["gambid", "stakeprix", "lollyspins", "acebet", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo"];
-  const getRecommendedRank = (card) => {
-    const idx = RECOMMENDED_ORDER.indexOf((card.getAttribute("data-provider") || "").toLowerCase());
+  const CRYPTO_PROVIDERS = new Set(["acebet", "shakebet", "duelbits", "stakeprix", "flush", "ritzo", "pubs"]);
+  const FAST_PAYOUT_PROVIDERS = new Set(["gambid", "duelbits", "stakeprix", "shakebet", "acebet", "flush", "pubs"]);
+  const LIVE_CASINO_PROVIDERS = new Set(["lollyspins", "shakebet", "duelbits", "thunderpick", "flush", "ivibet", "ritzo", "gambid", "acebet", "pubs"]);
+  const EXCLUSIVE_PROVIDERS = new Set(["gambid", "stakeprix", "lollyspins", "acebet", "shakebet", "pubs"]);
+  const RECOMMENDED_ORDER = ["gambid", "stakeprix", "lollyspins", "acebet", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo", "simsino", "wildroll", "nvbwin", "pubs"];
+  const NEWEST_ORDER = ["pubs", "gambid", "stakeprix", "lollyspins", "acebet", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo"];
+  const getRecommendedRank = (card, order = RECOMMENDED_ORDER) => {
+    const idx = order.indexOf((card.getAttribute("data-provider") || "").toLowerCase());
     return idx === -1 ? 999 : idx;
   };
+  const getNewestRank = (card) => getRecommendedRank(card, NEWEST_ORDER);
 
   const cardMatchesTag = (card, tag) => {
     const prov = (card.getAttribute("data-provider") || "").toLowerCase();
@@ -4787,13 +4807,7 @@ const setupFilterBar = () => {
         sorted.sort((a, b) => getRecommendedRank(a) - getRecommendedRank(b));
         break;
       case "newest":
-        sorted.sort((a, b) => {
-          const aProv = (a.getAttribute("data-provider") || "").toLowerCase();
-          const bProv = (b.getAttribute("data-provider") || "").toLowerCase();
-          if (aProv === "gambid" && bProv !== "gambid") return -1;
-          if (bProv === "gambid" && aProv !== "gambid") return 1;
-          return getRecommendedRank(b) - getRecommendedRank(a);
-        });
+        sorted.sort((a, b) => getNewestRank(a) - getNewestRank(b));
         break;
       case "bonus-desc":
         sorted.sort((a, b) => parseBonusPct(b) - parseBonusPct(a));
@@ -4879,8 +4893,10 @@ const setupFilterBar = () => {
     }
   });
 
-  // Initial uppdatering
-  setSortChipActive(sortEl ? sortEl.value : "recommended");
+  // Initial uppdatering — tvinga ALWAYS Recommended på sidladdning / reload
+  if (sortEl) sortEl.value = "recommended";
+  setSortChipActive("recommended");
+  applyAll();
   updateCount(cards);
 };
 
