@@ -12829,3 +12829,1094 @@ html[data-bh-mode="opening"] .bh-row.is-best::before {
   .cs-page__actions { flex-direction: column; width: 100%; }
   .cs-page__btn { width: 100%; justify-content: center; }
 }
+
+/* ================================================================
+   MOBIL-FIX 820PX — CLEAN MOBIL-LAYOUT
+   (övertrumfar tidigare mobil-queries, endast för skärmar <820px)
+   ================================================================ */
+@media (max-width: 820px) {
+
+  /* --- 1. OVERFLOW-SÄKRING --- */
+  html,
+  body,
+  .app-shell,
+  .app-main,
+  .wrap,
+  .promo-page,
+  .sp-hero-banner,
+  .card-bg-layer--xl,
+  .card-bg-layer,
+  .card-featured-hero,
+  .promo-hero,
+  .lb-hero,
+  .ci-shell {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+  * { box-sizing: border-box; }
+
+  /* Förhindra utstickande chips (absolute positionerade) från att orsaka scroll */
+  .sp-chip,
+  .chip,
+  .card-bg-layer--xl::before,
+  .card-bg-layer--xl::after,
+  .card-bg-layer::before,
+  .card-bg-layer::after {
+    max-width: 48vw !important;
+    max-height: 48vw !important;
+  }
+
+  /* --- 2. TOP-BAR + SIDEBAR-BRAND --- */
+  .sidebar-brand {
+    display: none !important;
+  }
+  :root {
+    --sidebar-w: 0 !important;
+    --top-bar-h: 58px;
+    --content-pad: 16px;
+  }
+  .top-bar::before {
+    left: 0 !important;
+    background: rgba(6, 6, 6, 0.94);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+  }
+  .top-bar-inner {
+    margin: 0 !important;
+    padding: 0 12px !important;
+    gap: 8px !important;
+    grid-template-columns: auto 1fr auto !important;
+  }
+  .top-bar-left {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+    grid-column: 1;
+    min-width: 0;
+  }
+  .top-bar-logo {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+  .top-bar-logo img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .top-bar-logo .logo-text {
+    font-size: 17px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .top-bar-center {
+    display: none !important;
+  }
+  .top-bar-right {
+    gap: 6px !important;
+    grid-column: 3;
+  }
+  .top-icon-btn {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 10px !important;
+  }
+  .top-icon-btn svg { width: 16px; height: 16px; }
+  .login-btn {
+    height: 34px !important;
+    padding: 0 12px !important;
+    font-size: 11.5px !important;
+    letter-spacing: 0.04em !important;
+    border-radius: 999px !important;
+  }
+
+  /* --- 3. SIDEBAR + APP-MAIN --- */
+  .app-sidebar { display: none !important; }
+  .app-main {
+    margin-left: 0 !important;
+    padding: 14px 12px 0 !important;
+  }
+
+  /* --- 4. HJÄLTAR (SP-HERO + CARD XL + FEATURED CARD) --- */
+  .bonus-grid--featured { grid-template-columns: 1fr !important; }
+  .bonus-grid { gap: 10px; }
+  .card-featured-hero {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    min-height: auto !important;
+    padding: 0 !important;
+  }
+  .card-featured-portrait {
+    width: 100% !important;
+    max-width: 220px !important;
+    height: auto !important;
+    justify-self: center !important;
+  }
+  .featured-logo-text {
+    font-size: 44px !important;
+    text-align: center;
+  }
+  .portrait-ph {
+    width: 100% !important;
+    right: 0 !important;
+    bottom: -12px !important;
+    position: relative;
+  }
+  .casino-card--featured {
+    padding: 14px 12px !important;
+    border-radius: 18px !important;
+  }
+  .card-stats-row--featured { padding: 10px 12px; }
+
+  /* XL card */
+  .casino-card--xl {
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+  .card-xl-content {
+    padding: 18px 14px 22px !important;
+    min-height: auto !important;
+    width: 100% !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+  .card-xl-portrait-wrap {
+    position: relative !important;
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    height: 160px !important;
+    order: -1 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    z-index: 6 !important;
+    pointer-events: none !important;
+  }
+  .card-xl-portrait-img {
+    position: relative !important;
+    width: auto !important;
+    max-width: 100% !important;
+    max-height: 160px !important;
+    height: auto !important;
+    left: auto !important;
+    right: auto !important;
+    top: 0 !important;
+    object-fit: contain !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+  .card-xl-stats { width: 100% !important; max-width: 440px !important; }
+  .card-xl-claim {
+    width: 100% !important;
+    min-width: 0 !important;
+    align-self: stretch !important;
+    height: 52px !important;
+    font-size: 15px !important;
+  }
+  .card-xl-leaderboard {
+    width: 100% !important;
+    align-self: stretch !important;
+    margin-top: 10px !important;
+  }
+  .card-xl-checks { align-self: center !important; text-align: center !important; }
+  .card-xl-checks li { justify-content: center !important; }
+  .card-xl-foot {
+    font-size: 10px !important;
+    letter-spacing: 0.05em !important;
+    padding: 0 8px !important;
+    text-align: center !important;
+    align-self: center !important;
+  }
+
+  /* Vanliga casino-kort */
+  .casino-card {
+    padding: 14px 12px 16px !important;
+    border-radius: 18px !important;
+    gap: 12px !important;
+    overflow: visible !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+  /* Lista/Rad-kort → BYT TILL KOLUMN på mobil så allt hamnar ovanpå varandra */
+  body .casino-card.casino-card--row,
+  body .casino-card.casino-card--list {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 14px 12px 16px !important;
+  }
+  body .casino-card .card-row-brand,
+  body .casino-card .card-list-logo {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  body .casino-card .card-row-logo img,
+  body .casino-card .card-list-logo img {
+    width: auto !important;
+    max-width: 140px !important;
+    height: 64px !important;
+    object-fit: contain !important;
+  }
+  body .casino-card .card-row-name {
+    margin-top: 6px !important;
+    font-size: 15px !important;
+    text-align: center !important;
+  }
+  body .casino-card .card-list-stats,
+  body .casino-card .card-row-stats {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 8px !important;
+    margin: 0 !important;
+  }
+  body .casino-card .card-row-perks {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    justify-content: center !important;
+    gap: 6px 10px !important;
+  }
+  /* Actions (claim + info) → FLYTTA UNDER VARANDRA, FULL BREDD */
+  body .casino-card .card-row-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    align-self: stretch !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    gap: 8px !important;
+    display: flex !important;
+  }
+  .card-grid-logo { padding: 24px 14px 14px !important; min-height: auto !important; }
+  .card-grid-logo-img { max-height: 58px !important; max-width: 85% !important; }
+  .card-grid-stats { margin: 12px 12px 0 !important; padding: 10px 8px !important; }
+  .card-grid-perks { padding: 14px 14px 0 !important; margin: 0 !important; gap: 6px 10px !important; }
+  .card-grid-perks li { font-size: 11.5px !important; }
+  .card-stats-row { gap: 4px; padding: 9px 10px; }
+  .card-stat-value { font-size: 15px !important; }
+  .card-stat-label { font-size: 9.5px !important; letter-spacing: 0.1em !important; }
+  .claim-btn,
+  .casino-card--grid .claim-btn,
+  body .casino-card .card-row-actions .claim-btn {
+    height: 46px !important;
+    font-size: 13px !important;
+    width: 100% !important;
+    align-self: stretch !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    order: 2 !important;
+  }
+  body .casino-card .card-row-actions .card-info-btn,
+  body .casino-card .card-row-actions .card-info-btn--row {
+    width: 100% !important;
+    height: 36px !important;
+    border-radius: 12px !important;
+    order: 1 !important;
+  }
+  .claim-btn--lg { height: 50px !important; font-size: 14px !important; }
+
+  /* --- 5. FILTER / SÖK --- */
+  .page-header { padding: 6px 0 14px !important; }
+  .page-title { font-size: 22px !important; letter-spacing: 0.015em; }
+  .page-subtitle { font-size: 12.5px !important; padding: 0 !important; }
+  .filter-bar {
+    position: sticky !important;
+    top: calc(var(--top-bar-h) + 8px) !important;
+    z-index: 50 !important;
+    border-radius: 14px !important;
+    padding: 10px !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(10, 8, 6, 0.92) !important;
+  }
+  .filter-bar-result { font-size: 12px !important; }
+  .filter-chip {
+    height: 34px !important;
+    padding: 0 10px !important;
+    font-size: 11px !important;
+    flex-shrink: 0 !important;
+  }
+  .filter-search-wrap--xl { height: 36px; }
+  .filter-search-wrap--xl input { font-size: 13px !important; }
+
+  /* --- 6. PROMO-SIDA (casinorecensioner) --- */
+  body.has-sticky-cta { padding-bottom: 108px; }
+  .promo-sticky-cta {
+    left: 8px !important;
+    right: 8px !important;
+    width: auto !important;
+    bottom: 10px !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    padding: 10px 10px 10px !important;
+    border-radius: 16px !important;
+    z-index: 120 !important;
+    transform: none !important;
+  }
+  .promo-sticky-left { flex-wrap: wrap !important; gap: 6px !important; }
+  .promo-sticky-kicker { font-size: 10px !important; letter-spacing: 0.12em !important; }
+  .promo-sticky-title { font-size: 13px !important; text-align: center; }
+  .promo-sticky-btn {
+    width: 100% !important;
+    height: 46px !important;
+    font-size: 13.5px !important;
+    border-radius: 12px !important;
+    padding: 0 16px !important;
+  }
+  .promo-hero {
+    padding: 20px 16px 22px !important;
+    border-radius: 20px !important;
+    gap: 16px !important;
+  }
+  .promo-hero-inner {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .promo-hero-badges { gap: 6px !important; }
+  .promo-badge {
+    padding: 5px 10px !important;
+    font-size: 10.5px !important;
+    letter-spacing: 0.14em !important;
+    border-radius: 8px !important;
+  }
+  .promo-hero-logo-wrap { gap: 10px !important; }
+  .promo-hero-logo {
+    height: 54px !important;
+    max-width: 160px !important;
+  }
+  .promo-hero-h1 {
+    font-size: 26px !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.015em !important;
+  }
+  .promo-hero-lede { font-size: 13.5px !important; }
+  .promo-hero-cta-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .promo-hero-cta-row > * { width: 100% !important; }
+  .promo-hero-cta,
+  .promo-hero-cta--ghost {
+    height: 48px !important;
+    font-size: 13.5px !important;
+    justify-content: center !important;
+  }
+  .promo-hero-side { order: -1; }
+  .promo-hero-card {
+    padding: 14px 14px 14px !important;
+    border-radius: 16px !important;
+    gap: 10px !important;
+  }
+  .promo-offer-header { gap: 10px !important; }
+  .promo-offer-logo {
+    height: 46px !important;
+    max-width: 140px !important;
+  }
+  .promo-offer-headline { font-size: 15px !important; }
+  .promo-offer-note { font-size: 11.5px !important; }
+  .promo-section {
+    gap: 12px !important;
+    padding-top: 18px !important;
+  }
+  .promo-section-title {
+    font-size: 16px !important;
+    padding-left: 14px !important;
+  }
+  .promo-section-title::before { width: 3px !important; left: 0 !important; }
+  .promo-stats {
+    gap: 8px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .promo-stat {
+    padding: 12px 10px !important;
+    border-radius: 14px !important;
+    gap: 4px !important;
+    min-height: auto !important;
+  }
+  .promo-stat-label { font-size: 9.5px !important; letter-spacing: 0.14em !important; }
+  .promo-stat-value { font-size: 16px !important; }
+  .promo-2col { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .promo-pros, .promo-cons { padding: 14px 14px !important; border-radius: 14px !important; }
+  .promo-pros li, .promo-cons li { font-size: 12.5px !important; padding: 6px 0 !important; gap: 8px !important; }
+  .pay-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .pay-tile { padding: 10px 8px !important; border-radius: 12px !important; gap: 6px !important; }
+  .pay-tile-icon { width: 26px; height: 26px; }
+  .pay-tile-name { font-size: 11px !important; }
+  .steps-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .step-card { padding: 14px 14px !important; border-radius: 14px !important; gap: 10px !important; }
+  .step-card-title { font-size: 14px !important; }
+  .faq-item-question { font-size: 13.5px !important; padding: 12px 40px 12px 14px !important; }
+  .faq-item-answer { padding: 2px 14px 14px !important; font-size: 13px !important; }
+  .faq-item-toggle { width: 28px; height: 28px; top: 10px; right: 10px; }
+  .provider-chip {
+    padding: 6px 11px !important;
+    font-size: 11px !important;
+    border-radius: 999px !important;
+  }
+  .screenshot-wrap { border-radius: 14px !important; }
+  .screenshot-caption {
+    padding: 6px 12px !important;
+    font-size: 10.5px !important;
+    letter-spacing: 0.06em !important;
+    top: 10px !important;
+    left: 10px !important;
+  }
+  .promo-disclaimer { font-size: 11px !important; padding: 12px 14px !important; border-radius: 12px !important; }
+  .promo-bottom-terms { font-size: 11px !important; padding: 10px 14px !important; border-radius: 12px !important; }
+
+  /* --- 7. CASINO INFO MODAL --- */
+  #casino-info-modal { padding: 10px !important; }
+  .casino-info-modal {
+    padding: 16px 14px 14px !important;
+    max-width: 100% !important;
+    width: calc(100% - 20px) !important;
+    max-height: 92vh !important;
+    border-radius: 18px !important;
+  }
+  .casino-info-close {
+    width: 32px !important;
+    height: 32px !important;
+    top: 10px !important;
+    right: 10px !important;
+    border-radius: 50% !important;
+  }
+  .ci-header { margin-bottom: 10px !important; }
+  .ci-tag { font-size: 10.5px !important; letter-spacing: 0.14em !important; padding: 4px 10px !important; }
+  .ci-name { font-size: 22px !important; }
+  .ci-about { font-size: 13px !important; line-height: 1.45; }
+  .ci-bonus-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    border-radius: 12px !important;
+    padding: 10px 6px !important;
+  }
+  .ci-bonus-cell { padding: 8px 8px !important; }
+  .ci-bonus-label { font-size: 9.5px !important; letter-spacing: 0.12em !important; }
+  .ci-bonus-value { font-size: 16px !important; }
+  .ci-section-title { font-size: 12.5px !important; letter-spacing: 0.12em !important; padding: 6px 8px !important; }
+  .ci-info-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .ci-info-cell { padding: 10px 10px !important; border-radius: 10px !important; }
+  .ci-info-label { font-size: 9.5px !important; }
+  .ci-info-value { font-size: 12.5px !important; }
+  .ci-preview { border-radius: 12px !important; margin: 12px 0 !important; }
+  .ci-preview-caption {
+    top: 10px !important; left: 10px !important;
+    font-size: 10.5px !important;
+    padding: 5px 10px !important;
+  }
+  .ci-footer {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding-top: 14px !important;
+  }
+  .ci-claim {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 48px !important;
+    font-size: 13.5px !important;
+    padding: 0 18px !important;
+    border-radius: 14px !important;
+    justify-content: center !important;
+  }
+  .ci-footnote { text-align: center !important; font-size: 10.5px !important; line-height: 1.5; }
+
+  /* --- 8. LOGIN MODAL --- */
+  .login-modal-content,
+  dialog.lm-modal .lm-dialog {
+    width: calc(100% - 20px) !important;
+    max-width: 100% !important;
+    padding: 18px 14px 20px !important;
+    border-radius: 18px !important;
+    max-height: 92vh !important;
+    overflow-y: auto;
+  }
+  .btn-login-discord {
+    width: 100% !important;
+    height: 48px !important;
+    font-size: 13.5px !important;
+    border-radius: 14px !important;
+  }
+  .lm-close {
+    width: 32px !important;
+    height: 32px !important;
+    top: 10px !important;
+    right: 10px !important;
+  }
+  .login-requirement-card { padding: 14px 14px !important; border-radius: 14px !important; }
+
+  /* --- 9. LEADERBOARD --- */
+  .lb-hero {
+    padding: 22px 16px 24px !important;
+    border-radius: 20px !important;
+    gap: 14px !important;
+  }
+  .lb-kicker-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .lb-kicker {
+    justify-content: center !important;
+    font-size: 11px !important;
+    letter-spacing: 0.12em !important;
+    padding: 6px 12px !important;
+  }
+  .lb-title {
+    font-size: 26px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.01em !important;
+  }
+  .lb-subtitle { font-size: 13px !important; }
+  .lb-hero-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    padding: 10px 8px !important;
+    border-radius: 14px !important;
+  }
+  .lb-hs-label { font-size: 9.5px !important; }
+  .lb-hs-value { font-size: 15px !important; }
+  .lb-cta-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .lb-cta, .lb-cta--ghost {
+    width: 100% !important;
+    height: 48px !important;
+    justify-content: center !important;
+    font-size: 13.5px !important;
+    border-radius: 14px !important;
+  }
+  .lb-race-banner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    padding: 14px 14px !important;
+    border-radius: 14px !important;
+  }
+  .lrb-info { gap: 10px !important; }
+  .lrb-trophy { width: 34px; height: 34px; }
+  .lrb-title { font-size: 16px !important; }
+  .lrb-sub { font-size: 11.5px !important; }
+  .lrb-badge {
+    font-size: 10.5px !important;
+    letter-spacing: 0.12em !important;
+    padding: 5px 10px !important;
+    align-self: flex-start !important;
+  }
+  .lb-table-wrap { border-radius: 14px !important; overflow: hidden; }
+  .lb-col-head { font-size: 10.5px !important; letter-spacing: 0.14em !important; padding: 10px 10px !important; }
+  .lb-row { padding: 10px 10px !important; gap: 8px !important; }
+  .lb-rank { width: 30px !important; height: 30px !important; font-size: 13px !important; }
+  .lb-user-name { font-size: 13px !important; }
+  .lb-user-wager { font-size: 11px !important; }
+  .lb-score { font-size: 15px !important; }
+  .lb-row-actions { gap: 6px !important; }
+  .lb-row-btn { height: 36px !important; padding: 0 10px !important; font-size: 11px !important; }
+
+  /* --- 10. FOOTER --- */
+  .site-footer {
+    margin-left: 0 !important;
+    padding: 28px 16px 24px !important;
+    border-radius: 22px 22px 0 0 !important;
+    overflow: hidden;
+  }
+  .footer-grid,
+  .site-footer .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .footer-col--brand {
+    grid-column: span 1 !important;
+  }
+  .footer-col-title {
+    font-size: 12px !important;
+    letter-spacing: 0.16em !important;
+    margin-bottom: 10px !important;
+  }
+  .footer-about-text { font-size: 12.5px !important; line-height: 1.5; }
+  .footer-link {
+    padding: 5px 0 !important;
+    font-size: 13px !important;
+  }
+  .footer-socials { gap: 10px !important; }
+  .footer-social-link {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+  .footer-social-link svg { width: 16px; height: 16px; }
+  .footer-bottom {
+    margin-top: 20px !important;
+    padding-top: 14px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    font-size: 10.5px !important;
+    letter-spacing: 0.06em !important;
+  }
+  .footer-bottom-links { gap: 12px !important; flex-wrap: wrap; }
+
+  /* --- 11. CHATT (GÖM HELT PÅ MOBIL) + FAB --- */
+  .chat-bubble,
+  .chat-bubble-unread,
+  .site-chat-launcher,
+  .site-chat-panel,
+  .site-chat-panel * {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  .leaderboard-fab {
+    width: 46px !important;
+    height: 46px !important;
+    bottom: 16px !important;
+    right: 12px !important;
+    left: auto !important;
+    border-radius: 14px !important;
+    z-index: 70 !important;
+  }
+  .toast-container {
+    bottom: 80px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    transform: none !important;
+  }
+
+  /* --- 12. SIDEBAR + MENY FÖR MOBIL (BACK KNAPP) --- */
+  .back-btn, .back-btn-topbar, .sidebar-collapse-btn {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 10px !important;
+  }
+  .back-btn svg, .back-btn-topbar svg, .sidebar-collapse-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* --- 13. WRAP PAGE WIDTH --- */
+  .wrap { max-width: 100% !important; }
+
+  /* --- 14. ALLA KVADRATISKA KORT (keno / blackjack med mera) --- */
+  .game-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+}
+
+/* ================================================================
+   MOBIL-FIX 480PX — SMÅ TELEFONER (iPhone SE likn.)
+   ================================================================ */
+@media (max-width: 480px) {
+
+  :root {
+    --top-bar-h: 54px;
+    --content-pad: 12px;
+  }
+
+  .login-btn { padding: 0 10px !important; font-size: 11px !important; letter-spacing: 0.03em !important; }
+  .top-bar-logo .logo-text { font-size: 15px !important; }
+  .top-bar-inner { padding: 0 10px !important; }
+
+  .promo-hero-h1 { font-size: 23px !important; }
+  .promo-hero-logo { height: 48px !important; max-width: 140px !important; }
+  .promo-offer-logo { height: 42px !important; max-width: 120px !important; }
+  .promo-offer-headline { font-size: 14px !important; }
+  .promo-stat-value { font-size: 15px !important; }
+  .promo-stat { padding: 10px 8px !important; }
+  .promo-stats { gap: 7px !important; }
+
+  .lb-title { font-size: 23px !important; }
+  .lb-hs-value { font-size: 14px !important; }
+
+  .page-title { font-size: 20px !important; }
+
+  .card-xl-content {
+    padding: 14px 12px 18px !important;
+    width: 100% !important;
+    min-height: auto !important;
+    align-items: center !important;
+  }
+  .card-xl-portrait-wrap {
+    position: relative !important;
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    height: 140px !important;
+    order: -1 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    z-index: 6 !important;
+  }
+  .card-xl-portrait-img {
+    position: relative !important;
+    width: auto !important;
+    max-width: 100% !important;
+    max-height: 140px !important;
+    height: auto !important;
+    left: auto !important;
+    right: auto !important;
+    top: 0 !important;
+    object-fit: contain !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+  .card-xl-claim,
+  .card-xl-leaderboard {
+    width: 100% !important;
+    align-self: stretch !important;
+  }
+  .card-stat-value { font-size: 14px !important; }
+
+  .featured-logo-text { font-size: 38px !important; }
+
+  .claim-btn {
+    height: 44px !important;
+    font-size: 12.5px !important;
+    width: 100% !important;
+    align-self: stretch !important;
+    min-width: 0 !important;
+  }
+  .claim-btn--lg { height: 48px !important; font-size: 13px !important; }
+  .ci-claim { height: 46px !important; font-size: 13px !important; }
+  .promo-sticky-btn { height: 44px !important; font-size: 13px !important; }
+  .lb-cta, .lb-cta--ghost { height: 46px !important; font-size: 13px !important; }
+
+  .casino-card {
+    padding: 12px 10px 14px !important;
+    border-radius: 16px !important;
+    overflow: visible !important;
+    min-height: auto !important;
+    height: auto !important;
+    gap: 10px !important;
+  }
+  /* Lista/Rad-kort → KOLUMN även på 480px (specifikitet!) */
+  body .casino-card.casino-card--row,
+  body .casino-card.casino-card--list {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 12px 10px 14px !important;
+  }
+  body .casino-card .card-row-brand,
+  body .casino-card .card-list-logo {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    justify-content: center !important;
+  }
+  body .casino-card .card-row-logo img,
+  body .casino-card .card-list-logo img {
+    max-width: 120px !important;
+    height: 56px !important;
+    object-fit: contain !important;
+  }
+  body .casino-card .card-row-name { font-size: 14px !important; text-align: center !important; }
+  body .casino-card .card-list-stats,
+  body .casino-card .card-row-stats {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 9px 6px !important;
+    margin: 0 !important;
+  }
+  body .casino-card .card-row-perks {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    justify-content: center !important;
+    gap: 5px 8px !important;
+  }
+  body .casino-card .card-row-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    align-self: stretch !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    gap: 7px !important;
+    display: flex !important;
+  }
+  body .casino-card .card-row-actions .claim-btn,
+  body .casino-card .card-row-actions .card-info-btn,
+  body .casino-card .card-row-actions .card-info-btn--row { width: 100% !important; }
+  .card-grid-logo { padding: 20px 10px 12px !important; min-height: auto !important; }
+  .card-grid-logo-img { max-height: 50px !important; max-width: 85% !important; }
+  .card-grid-stats { margin: 10px 10px 0 !important; padding: 9px 6px !important; }
+  .card-grid-perks { padding: 12px 10px 0 !important; margin: 0 !important; gap: 5px 8px !important; }
+  .card-grid-perks li { font-size: 10.5px !important; }
+  .card-stats-row { padding: 8px 8px !important; }
+  .card-info-btn { width: 24px !important; height: 24px !important; }
+  .card-info-btn svg { width: 12px !important; height: 12px !important; }
+  .card-info-btn--xl { width: 28px !important; height: 28px !important; }
+  .card-info-btn--xl svg { width: 12px !important; height: 12px !important; }
+  .promo-hero { padding: 18px 14px 20px !important; }
+  .promo-hero-card { padding: 12px 12px !important; }
+  .promo-hero-cta,
+  .promo-hero-cta--ghost { height: 46px !important; font-size: 13px !important; }
+
+  .site-footer { padding: 22px 14px 18px !important; }
+  .footer-bottom { font-size: 10px !important; padding-bottom: 10px !important; }
+
+  .filter-chip { height: 32px !important; padding: 0 9px !important; font-size: 10.5px !important; }
+
+  .ci-about { font-size: 12.5px !important; }
+  .ci-bonus-value { font-size: 15px !important; }
+  .faq-item-question { font-size: 12.5px !important; padding: 11px 38px 11px 12px !important; }
+  .faq-item-answer { font-size: 12px !important; padding: 2px 12px 12px !important; }
+  .provider-chip { padding: 5px 10px !important; font-size: 10.5px !important; }
+  .step-card { padding: 12px 12px !important; }
+
+  .lb-row { padding: 9px 8px !important; }
+  .lb-col-head { font-size: 9.5px !important; padding: 9px 8px !important; }
+  .lb-score { font-size: 14px !important; }
+  .lb-row-btn { height: 34px !important; font-size: 10.5px !important; padding: 0 8px !important; }
+
+  .sp-hero-h1 { font-size: 32px !important; }
+  .sp-hero-stat-value { font-size: 15px !important; }
+  .sp-hero-checks li { font-size: 13px !important; }
+  .sp-hero-claim { height: 54px !important; font-size: 14px !important; }
+  .sp-hero-banner { padding: 22px 14px 18px !important; }
+
+  .chat-bubble,
+  .chat-bubble-unread,
+  .site-chat-launcher,
+  .site-chat-panel,
+  .site-chat-panel * {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  .leaderboard-fab { bottom: 12px !important; right: 10px !important; left: auto !important; }
+  .promo-sticky-cta { bottom: 8px !important; }
+  body.has-sticky-cta { padding-bottom: 104px; }
+}
+
+/* ======================================================================
+   CASINO ROW/LIST → KOLUMN LAYOUT (GLOBAL MOBIL-FÖRVALT, SPEC 21+)
+   Sist i kaskaden + HÖG SPECIFIKITET = vinner ALLA tidigare queries!
+   Strategi: GLOBAL kolumn (body + 2 klass-namn, spec 21+), 
+   ÅTERSTÄLL ENBART DESKTOP med @media (min-width: 1101px).
+   ====================================================================== */
+
+/* ---- GLOBAL (MOBIL FÖRVALT, spec 21 = body + .casino-card + .casino-card--row) ---- */
+body .casino-card.casino-card--row,
+body .casino-card.casino-card--list {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 12px !important;
+  padding: 14px 12px 16px !important;
+  min-height: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+body .casino-card .card-row-brand,
+body .casino-card .card-list-logo {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+body .casino-card .card-row-logo img,
+body .casino-card .card-list-logo img {
+  width: auto !important;
+  max-width: 160px !important;
+  height: 64px !important;
+  object-fit: contain !important;
+}
+body .casino-card .card-row-name {
+  margin-top: 6px !important;
+  font-size: 15px !important;
+  text-align: center !important;
+}
+body .casino-card .card-row-stats,
+body .casino-card .card-list-stats,
+body .casino-card.casino-card--grid .card-grid-stats {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 10px 8px !important;
+  margin: 10px 0 0 !important;
+  flex: 0 0 auto !important;
+  display: grid !important;
+}
+body .casino-card .card-row-perks,
+body .casino-card.casino-card--grid .card-grid-perks {
+  padding: 0 !important;
+  margin: 10px 0 0 !important;
+  width: 100% !important;
+  justify-content: center !important;
+  gap: 6px 10px !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+}
+body .casino-card .card-row-actions,
+body .casino-card .card-list-actions {
+  flex-direction: column !important;
+  width: 100% !important;
+  align-self: stretch !important;
+  align-items: stretch !important;
+  padding: 0 !important;
+  gap: 8px !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  margin-top: 6px !important;
+}
+body .casino-card .card-row-actions .claim-btn,
+body .casino-card.casino-card--grid .claim-btn {
+  height: 46px !important;
+  font-size: 13px !important;
+  width: 100% !important;
+  align-self: stretch !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  order: 2 !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+}
+body .casino-card .card-row-actions .card-info-btn,
+body .casino-card .card-row-actions .card-info-btn--row {
+  width: 100% !important;
+  height: 36px !important;
+  border-radius: 12px !important;
+  order: 1 !important;
+  flex: 0 0 auto !important;
+}
+
+/* ---- SMÅ TELEFONER (< 520px): Ytterligare finjusteringar ---- */
+@media (max-width: 520px) {
+  body .casino-card.casino-card--row,
+  body .casino-card.casino-card--list {
+    padding: 12px 10px 14px !important;
+    gap: 10px !important;
+  }
+  body .casino-card .card-row-logo img,
+  body .casino-card .card-list-logo img {
+    max-width: 120px !important;
+    height: 56px !important;
+  }
+  body .casino-card .card-row-name { font-size: 14px !important; }
+  body .casino-card .card-row-stats,
+  body .casino-card .card-list-stats { padding: 9px 6px !important; }
+  body .casino-card .card-row-actions { gap: 7px !important; }
+  body .casino-card .card-row-actions .claim-btn {
+    height: 44px !important;
+    font-size: 12.5px !important;
+  }
+}
+
+/* ---- DESKTOP ENSAMSTÅENDE (≥ 1101px): ÅTERSTÄLL den normala row-layouten! ---- */
+@media (min-width: 1101px) {
+  body .casino-card.casino-card--row {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 20px !important;
+    padding: 16px 20px !important;
+  }
+  body .casino-card.casino-card--list {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 14px 18px !important;
+  }
+  body .casino-card .card-row-brand {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 148px !important;
+    padding-right: 6px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  body .casino-card .card-list-logo {
+    flex: 0 0 140px !important;
+    width: auto !important;
+    padding: 4px 0 !important;
+    justify-content: flex-start !important;
+  }
+  body .casino-card .card-row-logo img { width: 132px !important; max-width: none !important; height: 78px !important; }
+  body .casino-card .card-list-logo img { width: 120px !important; max-width: none !important; height: 80px !important; }
+  body .casino-card .card-row-name {
+    margin-top: 8px !important;
+    font-size: 16px !important;
+    text-align: center !important;
+  }
+  body .casino-card .card-row-stats {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    max-width: 440px !important;
+    padding: 0 8px !important;
+    margin: 0 !important;
+  }
+  body .casino-card .card-list-stats {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    max-width: 440px !important;
+    padding: 0 8px !important;
+    margin: 0 !important;
+  }
+  body .casino-card .card-row-perks {
+    margin: 0 0 0 12px !important;
+    width: auto !important;
+    justify-content: flex-start !important;
+  }
+  body .casino-card .card-row-actions {
+    flex-direction: row !important;
+    width: auto !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding-left: 8px !important;
+    margin-top: 0 !important;
+    margin-left: auto !important;
+  }
+  /* ÅTERSTÄLL claim-btn på ROW-kort (original grund-CSS .claim-btn--row) */
+  body .casino-card .card-row-actions .claim-btn {
+    height: 52px !important;
+    width: auto !important;
+    min-width: 170px !important;
+    padding: 0 30px !important;
+    border-radius: 999px !important;
+    font-size: 15px !important;
+    align-self: center !important;
+    order: 1 !important;
+    margin: 0 !important;
+  }
+  body .casino-card .card-row-actions .card-info-btn,
+  body .casino-card .card-row-actions .card-info-btn--row {
+    width: 38px !important;
+    height: 38px !important;
+    order: 2 !important;
+    border-radius: 50% !important;
+  }
+  body .casino-card.casino-card--grid .card-grid-stats { margin: 14px 16px 0 !important; padding: 10px 8px !important; }
+  body .casino-card.casino-card--grid .card-grid-perks { padding: 18px 20px 4px !important; margin: 0 auto !important; width: auto !important; }
+  /* ÅTERSTÄLL claim-btn på GRID-kort (original grund-CSS L3462) */
+  body .casino-card.casino-card--grid .claim-btn {
+    height: 56px !important;
+    font-size: 16px !important;
+    padding: 0 34px !important;
+    margin: 16px auto 0 !important;
+    width: auto !important;
+    min-width: 220px !important;
+    align-self: center !important;
+  }
+}
+
