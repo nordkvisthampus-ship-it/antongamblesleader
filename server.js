@@ -127,9 +127,7 @@ const reportOauthCoinsDebug = (hypothesisId, msg, data = {}, runId = "pre-fix") 
 
 const app = express();
 const PORT = Number.parseInt(process.env.PORT || "8000", 10);
-const AFFILIATE_REDIRECTS = Object.freeze({
-  acebet: "https://a.acebet.com/api/click?a=198&lp=268&c=211",
-});
+const AFFILIATE_REDIRECTS = Object.freeze({});
 const SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000;
 const SESSION_SECRET = process.env.SESSION_SECRET || "antongambles-local-dev-session-secret-change-me";
 const SESSION_COOKIE_NAME = "ag_session_token";
@@ -200,13 +198,13 @@ app.get("/go/:offer", (req, res) => {
 });
 
 const CASINO_ROUTES = Object.freeze([
-  "acebet",
   "duelbits",
   "flush",
   "gambid",
   "ivibet",
   "lollyspins",
   "nvcasino",
+  "pubs",
   "ritzo",
   "shakebet",
   "stakeprix",

@@ -126,23 +126,6 @@ const escapeHtml = (value) =>
     .replace(/'/g, "&#39;");
 
 const PROMO_INFO_META = {
-  acebet: {
-    providers: ["Pragmatic Play", "Hacksaw Gaming", "Nolimit City", "Evolution", "Originals"],
-    providerCopy: "Crypto-first pick with code-drop style promotions, instant settlements and focused slot volatility.",
-    url: "/go/acebet",
-    tag: "CRYPTO",
-    logo: "assets/acebet.png",
-    displayName: "AceBet",
-    intro: "Exclusive code-drop casino with instant crypto settlements, 10,000+ games and lightning-fast withdrawals. Popular high-volatility slot lineup with original games.",
-    richInfo: {
-      bonusPct: "175%", bonusMax: "$3,000", freeSpins: "300",
-      wager: "x40", minDep: "$20", maxWd: "Unlimited", wdTime: "Instant (crypto)",
-      crypto: true, support: true, established: "2024",
-      licences: "Curaçao",
-      languages: "English, German, French, Spanish, Portuguese, Italian, Norwegian, Swedish, Finnish, Polish",
-      payments: "Bitcoin, Ethereum, Litecoin, USDT, USDC, Bitcoin Cash, Dogecoin, Visa, Mastercard, Bank Transfer"
-    }
-  },
   lollyspins: {
     providers: ["Pragmatic Play", "Hacksaw Gaming", "Nolimit City", "Evolution", "BGaming"],
     providerCopy: "Strong slot-first lineup with a mix of bonus-heavy games, live casino staples and high-volatility titles.",
@@ -438,11 +421,6 @@ const closeAnimatedModal = (modal) => {
 };
 
 const CHAT_ANNOUNCE_PRESETS = {
-  acebet: {
-    accent: "orange",
-    kicker: "Code Drop",
-    description: "Code ANTON is live. Fast claim if you want the cleanest route into the offer.",
-  },
   duelbits: {
     accent: "blue",
     kicker: "Free Spins",
@@ -780,7 +758,6 @@ const focusPromoCardByName = (casinoName = "") => {
 
 const PROMO_SCREENSHOT_MAP = Object.freeze({
   gambid: "assets/gscreen.png",
-  acebet: "assets/acebetscreen.png",
   duelbits: "assets/duelbitsscreen.png",
   flush: "assets/flushscreen.png",
   ivibet: "assets/ivibetscreen.png",
@@ -4740,12 +4717,12 @@ const setupFilterBar = () => {
   };
 
   // Tag-regler: vilken casinon matchar vilka tags
-  const CRYPTO_PROVIDERS = new Set(["acebet", "shakebet", "duelbits", "stakeprix", "flush", "ritzo", "pubs"]);
-  const FAST_PAYOUT_PROVIDERS = new Set(["gambid", "duelbits", "stakeprix", "shakebet", "acebet", "flush", "pubs"]);
-  const LIVE_CASINO_PROVIDERS = new Set(["lollyspins", "shakebet", "duelbits", "thunderpick", "flush", "ivibet", "ritzo", "gambid", "acebet", "pubs"]);
-  const EXCLUSIVE_PROVIDERS = new Set(["gambid", "stakeprix", "lollyspins", "acebet", "shakebet", "pubs"]);
-  const RECOMMENDED_ORDER = ["gambid", "stakeprix", "lollyspins", "acebet", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo", "simsino", "wildroll", "nvbwin", "pubs"];
-  const NEWEST_ORDER = ["pubs", "gambid", "stakeprix", "lollyspins", "acebet", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo"];
+  const CRYPTO_PROVIDERS = new Set(["shakebet", "duelbits", "stakeprix", "flush", "ritzo", "pubs"]);
+  const FAST_PAYOUT_PROVIDERS = new Set(["gambid", "duelbits", "stakeprix", "shakebet", "flush", "pubs"]);
+  const LIVE_CASINO_PROVIDERS = new Set(["lollyspins", "shakebet", "duelbits", "thunderpick", "flush", "ivibet", "ritzo", "gambid", "pubs"]);
+  const EXCLUSIVE_PROVIDERS = new Set(["gambid", "stakeprix", "lollyspins", "shakebet", "pubs"]);
+  const RECOMMENDED_ORDER = ["gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo", "simsino", "wildroll", "nvbwin", "pubs"];
+  const NEWEST_ORDER = ["pubs", "gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo"];
   const getRecommendedRank = (card, order = RECOMMENDED_ORDER) => {
     const idx = order.indexOf((card.getAttribute("data-provider") || "").toLowerCase());
     return idx === -1 ? 999 : idx;

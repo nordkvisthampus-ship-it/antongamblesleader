@@ -69,12 +69,6 @@ const CASINO_PAGE_CONFIG = [
     summary: "Anton's no-wager top pick with a crypto-first setup.",
   },
   {
-    key: "acebet",
-    label: "AceBet",
-    path: "/acebet/",
-    summary: "Promo code ANTON with a fast signup angle.",
-  },
-  {
     key: "duelbits",
     label: "Duelbits",
     path: "/duelbits/",
