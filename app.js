@@ -4747,8 +4747,19 @@ const setupFilterBar = () => {
   const RECOMMENDED_ORDER = ["gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "duel", "thunderpick", "ivibet", "flush", "ritzo", "simsino", "wildroll", "nvbwin", "pubs"];
   const NEWEST_ORDER = ["duel", "pubs", "gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo"];
   const getRecommendedRank = (card, order = RECOMMENDED_ORDER) => {
-    const idx = order.indexOf((card.getAttribute("data-provider") || "").toLowerCase());
-    return idx === -1 ? 999 : idx;
+    if (!card) return 999;
+    const provRaw = card.getAttribute("data-provider") || "";
+    const idRaw = card.id || "";
+    const nameEl = card.querySelector(".card-row-name, .card-xl-name");
+    const nameRaw = nameEl ? (nameEl.textContent || "") : "";
+    const base = (provRaw + " " + idRaw + " " + nameRaw).toLowerCase();
+    for (let i = 0; i < order.length; i++) {
+      const key = String(order[i] || "").toLowerCase();
+      if (!key) continue;
+      if (provRaw.toLowerCase() === key) return i;
+      if (base.includes(key)) return i;
+    }
+    return 999;
   };
   const getNewestRank = (card) => getRecommendedRank(card, NEWEST_ORDER);
 
