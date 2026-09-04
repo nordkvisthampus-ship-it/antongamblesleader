@@ -75,6 +75,12 @@ const CASINO_PAGE_CONFIG = [
     summary: "A sharper hybrid pick with casino, originals and esports energy in the same lane.",
   },
   {
+    key: "duel",
+    label: "Duel",
+    path: "/duel/",
+    summary: "Exclusive fantasy & pick'em referral route with ThatsAnton code.",
+  },
+  {
     key: "flush",
     label: "Flush",
     path: "/flush/",

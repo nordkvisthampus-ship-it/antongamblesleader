@@ -292,6 +292,7 @@ const CHAT_CONFIG = {
   tipCooldownMs: Math.max(0, Number(process.env.CHAT_TIP_COOLDOWN_MS) || 0),
 };
 const CHAT_ANNOUNCE_CASINO_MAP = {
+  duel: { key: "duel", name: "Duel" },
   duelbits: { key: "duelbits", name: "Duelbits" },
   flush: { key: "flush", name: "Flush" },
   fortunejack: { key: "fortunejack", name: "FortuneJack" },
@@ -310,6 +311,7 @@ const PRESENCE_CONFIG = {
 };
 
 const BONUS_REWARD_KEYS = new Set([
+  "duel-bonus-card",
   "duelbits-bonus-card",
   "flush-bonus-card",
   "fortunejack-bonus-card",

@@ -198,6 +198,7 @@ app.get("/go/:offer", (req, res) => {
 });
 
 const CASINO_ROUTES = Object.freeze([
+  "duel",
   "duelbits",
   "flush",
   "gambid",

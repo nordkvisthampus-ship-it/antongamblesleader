@@ -177,6 +177,23 @@ const PROMO_INFO_META = {
       payments: "Bitcoin, Ethereum, Litecoin, Dogecoin, Bitcoin Cash, USDT, USDC, Solana, Visa, Mastercard, Apple Pay, Google Pay"
     }
   },
+  duel: {
+    providers: ["Originals", "Fantasy", "Pick'em"],
+    providerCopy: "Fantasy & pick'em platform with crypto payouts and referral bonus through ThatsAnton.",
+    url: "https://duel.com/r/ThatsAnton",
+    tag: "EXCLUSIVE",
+    logo: "assets/duel.png",
+    displayName: "Duel",
+    intro: "Duel with exclusive referral code ThatsAnton. Fantasy games, pick'em contests and instant crypto payouts.",
+    richInfo: {
+      bonusPct: "REFERRAL", bonusMax: "Code", freeSpins: "—",
+      wager: "N/A", minDep: "$10", maxWd: "Unlimited", wdTime: "Instant",
+      crypto: true, support: true, established: "2024",
+      licences: "Curaçao",
+      languages: "English, Spanish, Portuguese, German, French, Swedish, Norwegian, Danish, Finnish, Polish",
+      payments: "Bitcoin, Ethereum, Litecoin, USDT, USDC, Solana, Dogecoin, Bitcoin Cash, Visa, Mastercard, Apple Pay, Google Pay"
+    }
+  },
   thunderpick: {
     providers: ["Pragmatic Play", "Evolution", "Originals", "Sportsbook", "Esports"],
     providerCopy: "More hybrid than pure casino-first, with casino providers backed by sportsbook and esports energy in the same ecosystem.",
@@ -421,6 +438,11 @@ const closeAnimatedModal = (modal) => {
 };
 
 const CHAT_ANNOUNCE_PRESETS = {
+  duel: {
+    accent: "purple",
+    kicker: "Referral Live",
+    description: "Duel referral link live. Code ThatsAnton for fantasy & pick'em with instant payouts.",
+  },
   duelbits: {
     accent: "blue",
     kicker: "Free Spins",
@@ -759,6 +781,7 @@ const focusPromoCardByName = (casinoName = "") => {
 const PROMO_SCREENSHOT_MAP = Object.freeze({
   gambid: "assets/gscreen.png",
   duelbits: "assets/duelbitsscreen.png",
+  duel: "assets/duelscreen.png",
   flush: "assets/flushscreen.png",
   ivibet: "assets/ivibetscreen.png",
   lollyspins: "assets/lollyscreen.png",
@@ -4717,12 +4740,12 @@ const setupFilterBar = () => {
   };
 
   // Tag-regler: vilken casinon matchar vilka tags
-  const CRYPTO_PROVIDERS = new Set(["shakebet", "duelbits", "stakeprix", "flush", "ritzo", "pubs"]);
-  const FAST_PAYOUT_PROVIDERS = new Set(["gambid", "duelbits", "stakeprix", "shakebet", "flush", "pubs"]);
-  const LIVE_CASINO_PROVIDERS = new Set(["lollyspins", "shakebet", "duelbits", "thunderpick", "flush", "ivibet", "ritzo", "gambid", "pubs"]);
-  const EXCLUSIVE_PROVIDERS = new Set(["gambid", "stakeprix", "lollyspins", "shakebet", "pubs"]);
-  const RECOMMENDED_ORDER = ["gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo", "simsino", "wildroll", "nvbwin", "pubs"];
-  const NEWEST_ORDER = ["pubs", "gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo"];
+  const CRYPTO_PROVIDERS = new Set(["shakebet", "duelbits", "duel", "stakeprix", "flush", "ritzo", "pubs"]);
+  const FAST_PAYOUT_PROVIDERS = new Set(["gambid", "duelbits", "duel", "stakeprix", "shakebet", "flush", "pubs"]);
+  const LIVE_CASINO_PROVIDERS = new Set(["lollyspins", "shakebet", "duelbits", "duel", "thunderpick", "flush", "ivibet", "ritzo", "gambid", "pubs"]);
+  const EXCLUSIVE_PROVIDERS = new Set(["gambid", "stakeprix", "lollyspins", "shakebet", "pubs", "duel"]);
+  const RECOMMENDED_ORDER = ["gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "duel", "thunderpick", "ivibet", "flush", "ritzo", "simsino", "wildroll", "nvbwin", "pubs"];
+  const NEWEST_ORDER = ["duel", "pubs", "gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo"];
   const getRecommendedRank = (card, order = RECOMMENDED_ORDER) => {
     const idx = order.indexOf((card.getAttribute("data-provider") || "").toLowerCase());
     return idx === -1 ? 999 : idx;
