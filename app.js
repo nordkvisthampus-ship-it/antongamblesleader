@@ -4746,31 +4746,36 @@ const setupFilterBar = () => {
   const EXCLUSIVE_PROVIDERS = new Set(["gambid", "stakeprix", "lollyspins", "shakebet", "pubs", "duel"]);
   const RECOMMENDED_ORDER = ["gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "duel", "thunderpick", "ivibet", "flush", "ritzo", "simsino", "wildroll", "nvbwin", "pubs"];
   const NEWEST_ORDER = ["duel", "pubs", "gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo"];
-  const normalizeKey = (s) => String(s || "").toLowerCase();
-  const keyMatchesBase = (key, base) => {
-    if (!key) return false;
-    if (base === key) return true;
-    const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const re = new RegExp("(^|[^a-z0-9])" + escaped + "($|[^a-z0-9])", "i");
-    return re.test(base);
-  };
-  const getRecommendedRank = (card, order = RECOMMENDED_ORDER) => {
-    if (!card) return 999;
-    const provRaw = normalizeKey(card.getAttribute("data-provider") || "");
-    const idRaw = normalizeKey(card.id || "");
-    const nameEl = card.querySelector(".card-row-name, .card-xl-name");
-    const nameRaw = nameEl ? normalizeKey(nameEl.textContent || "") : "";
-    const base = (provRaw + " " + idRaw + " " + nameRaw);
+  const buildRankMap = (order) => {
+    const map = new Map();
     for (let i = 0; i < order.length; i++) {
-      const key = normalizeKey(order[i]);
-      if (!key) continue;
-      if (provRaw === key) return i;
-      if (idRaw && idRaw === key + "-bonus-card") return i;
-      if (keyMatchesBase(key, base)) return i;
+      const k = String(order[i] || "").toLowerCase();
+      if (!k) continue;
+      map.set(k, i);
+      map.set(k + "-bonus-card", i);
+    }
+    return map;
+  };
+  const RECOMMENDED_RANK_MAP = buildRankMap(RECOMMENDED_ORDER);
+  const NEWEST_RANK_MAP = buildRankMap(NEWEST_ORDER);
+  const getRecommendedRank = (card, order = RECOMMENDED_ORDER, rankMap = RECOMMENDED_RANK_MAP) => {
+    if (!card) return 999;
+    const idRaw = String(card.id || "").toLowerCase();
+    if (idRaw && rankMap.has(idRaw)) return rankMap.get(idRaw);
+    const provRaw = String(card.getAttribute("data-provider") || "").toLowerCase();
+    if (provRaw && rankMap.has(provRaw)) return rankMap.get(provRaw);
+    if (idRaw) {
+      const base = idRaw + " " + provRaw;
+      for (let i = 0; i < order.length; i++) {
+        const key = String(order[i] || "").toLowerCase();
+        if (!key) continue;
+        const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        if ((new RegExp("(^|[^a-z0-9])" + escaped + "($|[^a-z0-9])", "i")).test(base)) return i;
+      }
     }
     return 999;
   };
-  const getNewestRank = (card) => getRecommendedRank(card, NEWEST_ORDER);
+  const getNewestRank = (card) => getRecommendedRank(card, NEWEST_ORDER, NEWEST_RANK_MAP);
 
   const cardMatchesTag = (card, tag) => {
     const prov = (card.getAttribute("data-provider") || "").toLowerCase();
