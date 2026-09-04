@@ -4746,18 +4746,27 @@ const setupFilterBar = () => {
   const EXCLUSIVE_PROVIDERS = new Set(["gambid", "stakeprix", "lollyspins", "shakebet", "pubs", "duel"]);
   const RECOMMENDED_ORDER = ["gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "duel", "thunderpick", "ivibet", "flush", "ritzo", "simsino", "wildroll", "nvbwin", "pubs"];
   const NEWEST_ORDER = ["duel", "pubs", "gambid", "stakeprix", "lollyspins", "shakebet", "duelbits", "thunderpick", "ivibet", "flush", "ritzo"];
+  const normalizeKey = (s) => String(s || "").toLowerCase();
+  const keyMatchesBase = (key, base) => {
+    if (!key) return false;
+    if (base === key) return true;
+    const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp("(^|[^a-z0-9])" + escaped + "($|[^a-z0-9])", "i");
+    return re.test(base);
+  };
   const getRecommendedRank = (card, order = RECOMMENDED_ORDER) => {
     if (!card) return 999;
-    const provRaw = card.getAttribute("data-provider") || "";
-    const idRaw = card.id || "";
+    const provRaw = normalizeKey(card.getAttribute("data-provider") || "");
+    const idRaw = normalizeKey(card.id || "");
     const nameEl = card.querySelector(".card-row-name, .card-xl-name");
-    const nameRaw = nameEl ? (nameEl.textContent || "") : "";
-    const base = (provRaw + " " + idRaw + " " + nameRaw).toLowerCase();
+    const nameRaw = nameEl ? normalizeKey(nameEl.textContent || "") : "";
+    const base = (provRaw + " " + idRaw + " " + nameRaw);
     for (let i = 0; i < order.length; i++) {
-      const key = String(order[i] || "").toLowerCase();
+      const key = normalizeKey(order[i]);
       if (!key) continue;
-      if (provRaw.toLowerCase() === key) return i;
-      if (base.includes(key)) return i;
+      if (provRaw === key) return i;
+      if (idRaw && idRaw === key + "-bonus-card") return i;
+      if (keyMatchesBase(key, base)) return i;
     }
     return 999;
   };
