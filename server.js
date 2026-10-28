@@ -30,7 +30,7 @@ app.get('/site.js', (req,res) => res.sendFile(path.join(__dirname,'site.js')));
 app.get('/styles.css', (req,res) => res.sendFile(path.join(__dirname,'styles.css')));
 for (const dir of ['assets','favicon','uploads']) app.use('/'+dir,express.static(path.join(__dirname,dir),{dotfiles:'deny',index:false}));
 // Casino pages reuse the current homepage cards, keeping offers in one place.
-const casinoSlugs = ['gambid','moon','stakeprix','lollyspins','shakebet','pubs','flush','ivibet','duelbits','thunderpick','duel','ritzo'];
+const casinoSlugs = ['gambid','moon','stakeprix','lollyspins','shakebet','pubs','wildroll','flush','ivibet','duelbits','thunderpick','duel','ritzo'];
 for (const slug of casinoSlugs) {
   app.get(['/'+slug+'/', '/'+slug+'.html'], (req,res) => res.redirect(302,'/'+slug));
   app.get('/'+slug, (req,res,next) => {
