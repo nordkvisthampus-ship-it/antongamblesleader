@@ -1,8 +1,15 @@
 Options -Indexes
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteRule ^(?:leaderboard(?:\.html)?|stake/)$ /stake [R=302,L]
-RewriteRule ^stake$ stake.html [L]
+RewriteCond %{THE_REQUEST} \s/+index\.html(?:[?\s]) [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+[a-z0-9-]+\.html(?:[?\s]) [NC]
+RewriteRule ^leaderboard\.html$ /stake [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+[a-z0-9-]+\.html(?:[?\s]) [NC]
+RewriteRule ^([a-z0-9-]+)\.html$ /$1 [R=301,L,NC]
+RewriteRule ^(?:leaderboard|stake/)$ /stake [R=301,L]
+RewriteRule ^(stake|giveaway|giveaway-admin)/$ /$1 [R=301,L]
+RewriteRule ^(stake|giveaway|giveaway-admin)$ $1.html [L]
 RewriteRule ^(?:assets|favicon|uploads)/ - [L]
 RewriteRule ^(?:index\.html|styles\.css|site\.js|giveaway\.html|giveaway\.js|giveaway-admin\.html|giveaway-admin\.js|stake\.html|leaderboard\.js)?$ - [L]
 RewriteRule ^ - [R=404,L]

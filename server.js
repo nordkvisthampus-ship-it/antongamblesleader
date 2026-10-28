@@ -5,9 +5,20 @@ const path = require('path');
 const app = express();
 app.enable('strict routing');
 app.disable('x-powered-by');
+app.use((req,res,next) => {
+  if (req.method !== 'GET' && req.method !== 'HEAD') return next();
+  const match = req.path.match(/^\/([a-z0-9-]+)\.html\/?$/i);
+  if (match) {
+    const slug = match[1].toLowerCase();
+    const destination = slug === 'index' ? '/' : slug === 'leaderboard' ? '/stake' : '/'+slug;
+    return res.redirect(301,destination + req.url.slice(req.path.length));
+  }
+  next();
+});
 require('./stake-leaderboard.cjs').registerLeaderboard(app);
 require('./giveaway-system.cjs').registerGiveaways(app,express);
-app.get(['/', '/index.html'], (req,res) => res.sendFile(path.join(__dirname,'index.html')));
+app.get('/index.html', (req,res) => res.redirect(301,'/'));
+app.get('/', (req,res) => res.sendFile(path.join(__dirname,'index.html')));
 app.get(['/stake','/stake.html'], (req,res) => res.sendFile(path.join(__dirname,'stake.html')));
 app.get(['/stake/','/leaderboard.html','/leaderboard'], (req,res) => res.redirect(302,'/stake'));
 app.get(['/giveaway.html','/giveaway'], (req,res) => res.sendFile(path.join(__dirname,'giveaway.html')));
